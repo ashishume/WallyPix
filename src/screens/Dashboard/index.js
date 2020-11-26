@@ -1,75 +1,88 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {
-  Button,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-  NativeModules,
-  Platform,
+  // Button,
+  // Image,
+  // ScrollView,
+  // Text,
+  // TouchableOpacity,
+  // View,
+  // NativeModules,
+  // Platform,
+  StyleSheet,
+  StatusBar,
 } from 'react-native';
-import data from '../../assets/data.json';
+import {FlatList} from 'react-native-gesture-handler';
+import {SafeAreaView} from 'react-native-safe-area-context';
+// import data from '../../assets/data.json';
+import {
+  HomePageService,
+  SCREEN_WIDTH_RESOLUTION,
+} from '../../Services/HomePageService';
 
 const Dashboard = (props) => {
-  const TYPE = {
-    HOME: 'home',
-    LOCK: 'lock',
-    BOTH: 'both',
-  };
+  // const TYPE = {
+  //   HOME: 'home',
+  //   LOCK: 'lock',
+  //   BOTH: 'both',
+  // };
 
-  const ManageWallpaper = {
-    setWallpaper: (source, callback, type) => {
-      NativeModules.ManageWallpaper.setWallpaper(
-        Image.resolveAssetSource(source),
-        type,
-        callback,
-      );
-    },
-  };
+  // const ManageWallpaper = {
+  //   setWallpaper: (source, callback, type) => {
+  //     NativeModules.ManageWallpaper.setWallpaper(
+  //       Image.resolveAssetSource(source),
+  //       type,
+  //       callback,
+  //     );
+  //   },
+  // };
 
-  const setWallpaper = (uri) => {
-    console.log('clicked');
-    ManageWallpaper.setWallpaper(
-      {
-        uri: uri,
-      },
-      (e) => {
-        console.log(e);
-      },
-      TYPE.HOME,
-    );
-  };
+  // const setWallpaper = (uri) => {
+  //   console.log('clicked');
+  //   ManageWallpaper.setWallpaper(
+  //     {
+  //       uri: uri,
+  //     },
+  //     (e) => {
+  //       console.log(e);
+  //     },
+  //     TYPE.HOME,
+  //   );
+  // };
+
+  const [uri, setUri] = useState([]);
+
+  useEffect(() => {
+    const fetchAllImages = async () => {
+      const data = await HomePageService();
+      setUri(data);
+    };
+    fetchAllImages();
+  }, []);
   return (
-    <View>
-      <ScrollView>
-        {data.map((value, i) => {
-          return (
-            <Fragment key={i}>
-              <Image
-                source={{uri: value.path}}
-                style={{width: 200, height: 350, resizeMode: 'cover'}}
-              />
-              <TouchableOpacity
-                style={{
-                  paddingHorizontal: 30,
-                  paddingVertical: 8,
-                  marginBottom: 24,
-                  borderRadius: 16,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  backgroundColor: '#fff',
-                }}
-                onPress={() => setWallpaper(value.path)}
-                title="set wallpaper">
-                <Text>Press mee</Text>
-              </TouchableOpacity>
-            </Fragment>
-          );
-        })}
-      </ScrollView>
-    </View>
+    <SafeAreaView style={styles.container}>
+      {/* <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      /> */}
+
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
+});
 
 export default Dashboard;

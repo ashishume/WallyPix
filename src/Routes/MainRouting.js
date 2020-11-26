@@ -3,7 +3,7 @@ import {
   createStackNavigator,
   CardStyleInterpolators,
 } from '@react-navigation/stack';
-import Style from '../components/Styles';
+// import Style from '../components/Styles';
 // import DrawerNavigation from './DrawerNavigation';
 // import Login from '../components/screens/login';
 // import SplashScreen from '../components/screens/splashScreen';
@@ -32,6 +32,7 @@ import {NavigationContainer} from '@react-navigation/native';
 // import EmailVerification from '../components/screens/Auth/EmailVerification';
 import Dashboard from '../screens/Dashboard';
 import DrawerNavigation from './DrawerNavigation';
+import TabsNavigation from './TabsNavigation';
 const Stack = createStackNavigator();
 const config = {
   animation: 'spring',
@@ -47,13 +48,7 @@ const config = {
 const MainRouting = (props) => {
   return (
     <NavigationContainer>
-      {/* {props.videoBody.introVideoUrl ? (
-        <YoutubePlayerUI
-          key={props.videoBody.introVideoUrl}
-          videoId={props.videoBody.introVideoUrl}
-          videoTitle={props.videoBody.courseTitle}
-        />
-      ) : null} */}
+   
       <Stack.Navigator
         initialRouteName="Dashboard"
         screenOptions={{
@@ -65,7 +60,7 @@ const MainRouting = (props) => {
         }}>
         <Stack.Screen
           name="Dashboard"
-          component={DrawerNavigation}
+          component={TabsNavigation}
           options={{
             headerShown: false,
           }}
@@ -225,21 +220,21 @@ const MainRouting = (props) => {
   );
 };
 
-export const headerStyles = {
-  headerTitleStyle: {
-    ...Style.fontFamily,
-    marginLeft: -15,
-    paddingLeft: 0,
-  },
-  headerStyle: {
-    shadowOpacity: 1,
-    shadowOffset: {
-      height: 10,
-    },
-    elevation: 10,
-    shadowRadius: 5,
-  },
-};
+// export const headerStyles = {
+//   headerTitleStyle: {
+//     ...Style.fontFamily,
+//     marginLeft: -15,
+//     paddingLeft: 0,
+//   },
+//   headerStyle: {
+//     shadowOpacity: 1,
+//     shadowOffset: {
+//       height: 10,
+//     },
+//     elevation: 10,
+//     shadowRadius: 5,
+//   },
+// };
 // const mapStateToProps = (state, ownProps) => {
 //   return {
 //     videoBody: state.visible.videoBody,
