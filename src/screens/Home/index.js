@@ -7,14 +7,8 @@ import TopNavigation from '../Shared/TopNavigation';
 const Home = (props) => {
   return (
     <View>
-      <TopNavigation {...props} />
-      {/* <Button
-        raised={true}
-        onPress={() => props.navigation.toggleDrawer()}
-        title="Click"
-      /> */}
-      {/* <Text> Home </Text> */}
-      <Dashboard />
+      <TopNavigation {...props} name={'Explore'} />
+      <Dashboard {...props} />
     </View>
   );
 };

@@ -45,7 +45,7 @@ const TabsNavigation = () => {
         name="Home"
         component={DrawerNavigation}
         options={{
-          tabBarColor: '#3d94e5',
+          tabBarColor: '#c97a3e',
         }}
       />
       <Tab.Screen
@@ -58,7 +58,7 @@ const TabsNavigation = () => {
       <Tab.Screen
         name="Downloads"
         options={{
-          tabBarColor: '#c97a3e',
+          tabBarColor: '#3d94e5',
         }}
         component={Downloads}
       />

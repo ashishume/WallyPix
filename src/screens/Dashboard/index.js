@@ -1,18 +1,8 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {
-  // Button,
-  // Image,
-  // ScrollView,
-  // Text,
-  // TouchableOpacity,
-  // View,
-  // NativeModules,
-  // Platform,
-  StyleSheet,
-  StatusBar,
-} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
+import {Text, StyleSheet, RefreshControl, StatusBar, View} from 'react-native';
+import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import ImageList from '../../components/ImageList';
 // import data from '../../assets/data.json';
 import {
   HomePageService,
@@ -50,7 +40,8 @@ const Dashboard = (props) => {
   // };
 
   const [uri, setUri] = useState([]);
-  
+
+  const renderListItem = (data) => <ImageList imageUri={data.item.imageUri} />;
 
   useEffect(() => {
     const fetchAllImages = async () => {
@@ -60,29 +51,29 @@ const Dashboard = (props) => {
     fetchAllImages();
   }, []);
   return (
-    <SafeAreaView style={styles.container}>
-      {/* <FlatList
-        data={DATA}
-        renderItem={renderItem}
+    <View style={styles.container}>
+      {/* <Text style={styles.header}>Latest</Text> */}
+      <FlatList
+        columnWrapperStyle={{justifyContent: 'space-between'}}
+        data={uri}
+        numColumns={2}
+        renderItem={renderListItem}
         keyExtractor={(item) => item.id}
-      /> */}
-
-    </SafeAreaView>
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    width: '100%',
+    backgroundColor: '#fff',
   },
-  item: {
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
+  header: {
+    fontSize: 40,
+    marginHorizontal: 10,
+    fontFamily: 'FontAwesome5_Brands',
+    fontWeight: 'bold',
   },
 });
 
