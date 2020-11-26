@@ -50,6 +50,7 @@ const Dashboard = (props) => {
   // };
 
   const [uri, setUri] = useState([]);
+  
 
   useEffect(() => {
     const fetchAllImages = async () => {
