@@ -7,7 +7,11 @@ import {
   View,
   Dimensions,
 } from 'react-native';
-import {FlatList, ScrollView} from 'react-native-gesture-handler';
+import {
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import ImageList from '../../components/ImageList';
 // import data from '../../assets/data.json';
@@ -51,7 +55,16 @@ const Dashboard = (props) => {
   const [uri, setUri] = useState([]);
   const [page, setPage] = useState(1);
 
-  const renderListItem = (data) => <ImageList imageUri={data.item.imageUri} />;
+  const renderListItem = (data) => (
+    <ImageList
+      imageClickHandler={() => imageClickHandler(data.item)}
+      imageUri={data.item.imageUri}
+    />
+  );
+
+  const imageClickHandler = (e) => {
+    console.log(e);
+  };
 
   useEffect(() => {
     const fetchAllImages = async () => {
