@@ -19,17 +19,28 @@ const {width, height} = Dimensions.get('window');
 const ImageModal = (props) => {
   const [show, setShow] = useState(false);
 
-  const setWallpaper = () => {
-    setShow(true);
-    // ManageWallpaper.setWallpaper(
-    //   {
-    //     uri: props.imageUri,
-    //   },
-    //   (e) => {
-    //     console.log(e);
-    //   },
-    //   TYPE.HOME,
-    // );
+  const setWallpaper = (type) => {
+    let value;
+    if (type == 'home') {
+      value = TYPE.HOME;
+    } else if (type == 'lock') {
+      value = TYPE.LOCK;
+    } else if (type == 'both') {
+      value = TYPE.BOTH;
+    }
+    ManageWallpaper.setWallpaper(
+      {
+        uri: props.imageUri,
+      },
+      async (e) => {
+        await props.modalToggle(false);
+        await ToastAndroid.show(
+          'Wallpaper set successfully',
+          ToastAndroid.SHORT,
+        );
+      },
+      value,
+    );
   };
   const TYPE = {
     HOME: 'home',
@@ -46,6 +57,7 @@ const ImageModal = (props) => {
       );
     },
   };
+
   return (
     <Fragment>
       {show == true ? (
@@ -55,14 +67,28 @@ const ImageModal = (props) => {
           transparent={true}
           onRequestClose={() => setShow(false)}>
           <View style={styles.modalSelectContainer}>
-            <View style={{width: width}}>
-              <Text style={styles.modalSelectFont}>Home Screen</Text>
-              <Text style={styles.modalSelectFont}>Lock Screen</Text>
-              <Text style={styles.modalSelectFont}>Both</Text>
+            <View style={styles.innerSelectContainer}>
+              <TouchableOpacity
+                activeOpacity={0.3}
+                onPress={() => setWallpaper('home')}>
+                <Text style={styles.modalSelectFont}>Home Screen</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                activeOpacity={0.3}
+                onPress={() => setWallpaper('lock')}>
+                <Text style={styles.modalSelectFont}>Lock Screen</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                activeOpacity={0.3}
+                onPress={() => setWallpaper('both')}>
+                <Text style={styles.modalSelectFont}>Both</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.cancelButtonContainer}
+                onPress={() => setShow(false)}>
+                <Text style={styles.cancelButton}>Cancel</Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={() => setShow(false)}>
-              <Text>Cancel</Text>
-            </TouchableOpacity>
           </View>
         </Modal>
       ) : null}
@@ -81,7 +107,7 @@ const ImageModal = (props) => {
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.7}
-              onPress={() => setWallpaper()}
+              onPress={() => setShow(true)}
               style={styles.setWallpaper}
               onPressIn={() =>
                 ToastAndroid.show('Set Wallpaper', ToastAndroid.SHORT)
@@ -117,18 +143,25 @@ const styles = StyleSheet.create({
   modalSelectContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignContent: 'center',
     alignItems: 'center',
-    // alignSelf: 'center',
   },
   modalSelectFont: {
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 25,
+    paddingVertical: 10,
     textAlign: 'center',
-    backgroundColor: '#000',
-    opacity: 0.4,
-    borderBottomColor: '#000',
+  },
+  innerSelectContainer: {
+    width: width - 70,
+    backgroundColor: 'rgba(0, 0, 0,0.5)',
+  },
+  cancelButtonContainer: {
+    padding: 10,
+  },
+  cancelButton: {
+    textAlign: 'center',
+    color: '#fff',
   },
 });
 

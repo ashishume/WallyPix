@@ -70,12 +70,12 @@ const styles = StyleSheet.create({
     paddingBottom: 120,
     backgroundColor: '#fff',
   },
-  header: {
-    fontSize: 40,
-    marginHorizontal: 10,
-    fontFamily: 'FontAwesome5_Brands',
-    fontWeight: 'bold',
-  },
+  // header: {
+  //   fontSize: 40,
+  //   marginHorizontal: 10,
+  //   fontFamily: 'Kodchasan-Regular',
+  //   fontWeight: 'bold',
+  // },
 });
 
 export default Dashboard;

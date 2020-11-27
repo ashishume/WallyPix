@@ -34,6 +34,7 @@ const TopNavigation = (props) => {
           />
           <Text
             style={{
+              fontFamily: 'RobotoRegular',
               fontSize: 28,
               paddingHorizontal: 5,
               fontWeight: 'bold',

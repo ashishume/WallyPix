@@ -11,7 +11,7 @@ const ImageList = ({imageUri, imageClickHandler}) => {
           source={{
             uri: imageUri,
           }}
-          thumbnailSource={require('../assets/newLoader.gif')}
+          thumbnailSource={require('../introAssets/newLoader.gif')}
           style={styles.image}
         />
       </TouchableOpacity>
