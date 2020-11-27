@@ -1,10 +1,19 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
+import ProgressiveImage from './ProgressiveImage';
 const {width, height} = Dimensions.get('window');
+
 const ImageList = ({imageUri}) => {
   return (
     <View style={styles.container}>
-      <Image source={{uri: imageUri}} style={styles.image} />
+      <ProgressiveImage
+        resizeMode="cover"
+        source={{
+          uri: imageUri,
+        }}
+        thumbnailSource={require('../assets/newLoader.gif')}
+        style={styles.image}
+      />
     </View>
   );
 };

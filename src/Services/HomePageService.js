@@ -1,7 +1,6 @@
 import {
   DOWNLOAD_BASE_URL,
   HOME_PAGE_BASE_URL,
-  RESOLUTIONS,
   RESOLUTION_PIXELS,
 } from '../../enviroment';
 import cheerio from 'react-native-cheerio';
@@ -15,8 +14,8 @@ export const SCREEN_WIDTH_RESOLUTION = PixelRatio.getPixelSizeForLayoutSize(
 
 let ScreenResolutionData = '';
 const IdentifyScreenWidth = () => {
-  const width = SCREEN_WIDTH_RESOLUTION;
-  switch (width) {
+  const screenWidth = SCREEN_WIDTH_RESOLUTION;
+  switch (screenWidth) {
     case 2160:
       ScreenResolutionData = RESOLUTION_PIXELS[1366];
       break;
@@ -40,22 +39,21 @@ const IdentifyScreenWidth = () => {
   }
 };
 
-const loadGraphicCards = async () => {
+const loadGraphicCards = async (page) => {
   await IdentifyScreenWidth();
-  const searchUrl = HOME_PAGE_BASE_URL + ScreenResolutionData;
+  const searchUrl = HOME_PAGE_BASE_URL + ScreenResolutionData + '/page' + page;
   const response = await fetch(searchUrl); // fetch page
   const htmlString = await response.text(); // get response text
   const $ = cheerio.load(htmlString); // parse HTML string
   return $('.wallpapers__item > .wallpapers__link');
 };
 
-export const HomePageService = async () => {
+export const HomePageService = async (page = 1) => {
   // https://images.wallpaperscraft.com/image/car_blue_headlight_193447_720x1280.jpg   //sample image url
 
   let temp = [];
-  const data = await loadGraphicCards();
+  const data = await loadGraphicCards(page);
   for (let i = 0; i < data.length; i++) {
-    console.log();
     const tempHref = data[i].attribs.href.toString().split('/'); //spliting the sample URL into 3 data based on slash
     const createUrl =
       DOWNLOAD_BASE_URL +

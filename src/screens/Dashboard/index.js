@@ -1,5 +1,12 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {Text, StyleSheet, RefreshControl, StatusBar, View} from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  RefreshControl,
+  StatusBar,
+  View,
+  Dimensions,
+} from 'react-native';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import ImageList from '../../components/ImageList';
@@ -8,6 +15,8 @@ import {
   HomePageService,
   SCREEN_WIDTH_RESOLUTION,
 } from '../../Services/HomePageService';
+
+const {width, height} = Dimensions.get('window');
 
 const Dashboard = (props) => {
   // const TYPE = {
@@ -40,6 +49,7 @@ const Dashboard = (props) => {
   // };
 
   const [uri, setUri] = useState([]);
+  const [page, setPage] = useState(1);
 
   const renderListItem = (data) => <ImageList imageUri={data.item.imageUri} />;
 
@@ -50,15 +60,30 @@ const Dashboard = (props) => {
     };
     fetchAllImages();
   }, []);
+
+  // let
+  const endScrolling = async () => {
+    await setPage((prev) => {
+      return prev + 1;
+    });
+    const lazyData = await HomePageService(page);
+
+    await setUri((prevData) => {
+      return [...prevData, ...lazyData];
+    });
+  };
+
   return (
     <View style={styles.container}>
-      {/* <Text style={styles.header}>Latest</Text> */}
+      {/* <SkeletonLoader /> */}
       <FlatList
         columnWrapperStyle={{justifyContent: 'space-between'}}
         data={uri}
         numColumns={2}
         renderItem={renderListItem}
+        onEndReachedThreshold={0.4}
         keyExtractor={(item) => item.id}
+        onEndReached={() => endScrolling()}
       />
     </View>
   );
@@ -66,7 +91,9 @@ const Dashboard = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    height: height,
+    paddingBottom: 120,
+    // paddingBottom:500,
     backgroundColor: '#fff',
   },
   header: {
