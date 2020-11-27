@@ -14,6 +14,7 @@ import {
   Text,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {SaveImageService} from '../Services/SaveImageService';
 const {width, height} = Dimensions.get('window');
 
 const ImageModal = (props) => {
@@ -57,7 +58,9 @@ const ImageModal = (props) => {
       );
     },
   };
-
+  const onDownloadHandler = async () => {
+    await SaveImageService(props.imageUri);
+  };
   return (
     <Fragment>
       {show == true ? (
@@ -114,6 +117,15 @@ const ImageModal = (props) => {
               }>
               <Icon size={60} color="#fff" name="wallpaper" />
             </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => onDownloadHandler()}
+              style={styles.downloadWallpaper}
+              onPressIn={() =>
+                ToastAndroid.show('Download wallpaper', ToastAndroid.SHORT)
+              }>
+              <Icon size={60} color="#fff" name="download-circle" />
+            </TouchableOpacity>
           </ImageBackground>
         ) : null}
       </Modal>
@@ -140,6 +152,7 @@ const styles = StyleSheet.create({
     bottom: 10,
     right: 10,
   },
+  downloadWallpaper: {position: 'absolute', bottom: 10, left: 10},
   modalSelectContainer: {
     flex: 1,
     justifyContent: 'center',
