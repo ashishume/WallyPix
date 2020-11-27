@@ -1,70 +1,16 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import {
-  Text,
-  StyleSheet,
-  RefreshControl,
-  StatusBar,
-  View,
-  Dimensions,
-} from 'react-native';
-import {
-  FlatList,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native-gesture-handler';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, View, Dimensions} from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
 import ImageList from '../../components/ImageList';
-// import data from '../../assets/data.json';
-import {
-  HomePageService,
-  SCREEN_WIDTH_RESOLUTION,
-} from '../../Services/HomePageService';
+import {HomePageService} from '../../Services/HomePageService';
+import ImageModal from '../../components/ImageModal';
 
 const {width, height} = Dimensions.get('window');
-
 const Dashboard = (props) => {
-  // const TYPE = {
-  //   HOME: 'home',
-  //   LOCK: 'lock',
-  //   BOTH: 'both',
-  // };
-
-  // const ManageWallpaper = {
-  //   setWallpaper: (source, callback, type) => {
-  //     NativeModules.ManageWallpaper.setWallpaper(
-  //       Image.resolveAssetSource(source),
-  //       type,
-  //       callback,
-  //     );
-  //   },
-  // };
-
-  // const setWallpaper = (uri) => {
-  //   console.log('clicked');
-  //   ManageWallpaper.setWallpaper(
-  //     {
-  //       uri: uri,
-  //     },
-  //     (e) => {
-  //       console.log(e);
-  //     },
-  //     TYPE.HOME,
-  //   );
-  // };
-
   const [uri, setUri] = useState([]);
   const [page, setPage] = useState(1);
-
-  const renderListItem = (data) => (
-    <ImageList
-      imageClickHandler={() => imageClickHandler(data.item)}
-      imageUri={data.item.imageUri}
-    />
-  );
-
-  const imageClickHandler = (e) => {
-    console.log(e);
-  };
+  const [visible, setIsVisible] = useState(false);
+  const [imageUri, setImageUri] = useState(false);
 
   useEffect(() => {
     const fetchAllImages = async () => {
@@ -74,13 +20,23 @@ const Dashboard = (props) => {
     fetchAllImages();
   }, []);
 
-  // let
+  const renderListItem = (data) => (
+    <ImageList
+      imageClickHandler={() => imageClickHandler(data.item)}
+      imageUri={data.item.imageUri}
+    />
+  );
+
+  const imageClickHandler = async (e) => {
+    await setIsVisible(true);
+    await setImageUri(e.imageUri);
+  };
+
   const endScrolling = async () => {
     await setPage((prev) => {
       return prev + 1;
     });
     const lazyData = await HomePageService(page);
-
     await setUri((prevData) => {
       return [...prevData, ...lazyData];
     });
@@ -88,7 +44,13 @@ const Dashboard = (props) => {
 
   return (
     <View style={styles.container}>
-      {/* <SkeletonLoader /> */}
+      {visible == true ? (
+        <ImageModal
+          imageUri={imageUri}
+          isVisible={visible}
+          modalToggle={(e) => setIsVisible(e)}
+        />
+      ) : null}
       <FlatList
         columnWrapperStyle={{justifyContent: 'space-between'}}
         data={uri}
@@ -106,7 +68,6 @@ const styles = StyleSheet.create({
   container: {
     height: height,
     paddingBottom: 120,
-    // paddingBottom:500,
     backgroundColor: '#fff',
   },
   header: {

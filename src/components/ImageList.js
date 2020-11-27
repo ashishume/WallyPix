@@ -1,13 +1,11 @@
 import React from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
-import {TouchableHighlight} from 'react-native-gesture-handler';
-import ProgressiveImage from './ProgressiveImage';
+import {View, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
 const {width, height} = Dimensions.get('window');
-
+import ProgressiveImage from '../components/ProgressiveImage';
 const ImageList = ({imageUri, imageClickHandler}) => {
   return (
     <View style={styles.container}>
-      <TouchableHighlight onPress={imageClickHandler}>
+      <TouchableOpacity activeOpacity={0.7} onPress={imageClickHandler}>
         <ProgressiveImage
           resizeMode="cover"
           source={{
@@ -16,7 +14,7 @@ const ImageList = ({imageUri, imageClickHandler}) => {
           thumbnailSource={require('../assets/newLoader.gif')}
           style={styles.image}
         />
-      </TouchableHighlight>
+      </TouchableOpacity>
     </View>
   );
 };
