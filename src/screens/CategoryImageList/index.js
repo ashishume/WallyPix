@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Dimensions, PermissionsAndroid} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+import {FONT_FAMILY} from '../../../enviroment';
 import ImageList from '../../components/ImageList';
 import ImageModal from '../../components/ImageModal';
 import {CategoryService} from '../../Services/CategoryService';

@@ -13,20 +13,13 @@ const TopNavigation = (props) => {
           justifyContent: 'center',
           width: '100%',
           height: 65,
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 0,
-            height: 6,
-          },
-          shadowOpacity: 0.37,
-          shadowRadius: 7.49,
-          elevation: 12,
         }}>
         <View
           style={{
             flex: 1,
             flexDirection: 'row',
             alignItems: 'center',
+            paddingHorizontal: 10,
           }}>
           <Icon
             name="menu-outline"
@@ -36,8 +29,8 @@ const TopNavigation = (props) => {
           <Text
             style={{
               ...FONT_FAMILY,
-              fontSize: 28,
-              paddingHorizontal: 5,
+              fontSize: 40,
+              paddingHorizontal: 10,
               flexGrow: 1,
             }}>
             {props.name}

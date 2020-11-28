@@ -1,6 +1,7 @@
 import React, {Fragment, useEffect} from 'react';
 import MainRouting from './Routes/MainRouting';
 import {StatusBar, PermissionsAndroid} from 'react-native';
+
 const App = () => {
   useEffect(() => {
     const requestStoragePermission = async () => {

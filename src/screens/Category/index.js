@@ -8,6 +8,7 @@ import {
   ImageBackground,
   FlatList,
 } from 'react-native';
+import {Fragment} from 'react/cjs/react.production.min';
 import {CATEGORY_LIST, FONT_FAMILY} from '../../../enviroment';
 import {CategoryService} from '../../Services/CategoryService';
 const {width, height} = Dimensions.get('window');
@@ -42,11 +43,14 @@ const Category = (props) => {
     </View>
   );
   return (
-    <FlatList
-      data={CATEGORY_LIST}
-      renderItem={renderCategoryListItem}
-      keyExtractor={(item) => item.id}
-    />
+    <Fragment>
+      <Text style={styles.headerText}>Categories</Text>
+      <FlatList
+        data={CATEGORY_LIST}
+        renderItem={renderCategoryListItem}
+        keyExtractor={(item) => item.id}
+      />
+    </Fragment>
   );
 };
 
@@ -57,6 +61,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  headerText: {
+    ...FONT_FAMILY,
+    fontSize: 40,
+    paddingHorizontal: 10,
   },
   cardContainer: {
     width: width - 20,
