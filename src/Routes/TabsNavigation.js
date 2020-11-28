@@ -5,7 +5,7 @@ import DrawerNavigation from './DrawerNavigation';
 import Category from '../screens/Category';
 import Downloads from '../screens/Downloads';
 import Profile from '../screens/Profile';
-import {COLOR_SCHEME, TAB_ICONS} from '../../enviroment';
+import {COLOR_SCHEME, TAB_COLOR, TAB_ICONS} from '../../enviroment';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -45,20 +45,20 @@ const TabsNavigation = () => {
         name="Home"
         component={DrawerNavigation}
         options={{
-          tabBarColor: '#c97a3e',
+          tabBarColor: TAB_COLOR.home,
         }}
       />
       <Tab.Screen
         name="Category"
         options={{
-          tabBarColor: '#3fbaa9',
+          tabBarColor: TAB_COLOR.category,
         }}
         component={Category}
       />
       <Tab.Screen
         name="Downloads"
         options={{
-          tabBarColor: '#3d94e5',
+          tabBarColor: TAB_COLOR.download,
         }}
         component={Downloads}
       />

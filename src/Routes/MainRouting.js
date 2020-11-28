@@ -5,10 +5,9 @@ import {
 } from '@react-navigation/stack';
 
 import {NavigationContainer} from '@react-navigation/native';
-import Dashboard from '../screens/Dashboard';
-import DrawerNavigation from './DrawerNavigation';
 import TabsNavigation from './TabsNavigation';
 import CategoryImageList from '../screens/CategoryImageList';
+import {TAB_COLOR} from '../../enviroment';
 const Stack = createStackNavigator();
 const config = {
   animation: 'spring',
@@ -21,7 +20,7 @@ const config = {
     restSpeedThreshold: 0.01,
   },
 };
-const MainRouting = (props) => {
+const MainRouting = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -43,8 +42,12 @@ const MainRouting = (props) => {
         <Stack.Screen
           name="CategoryImageList"
           component={CategoryImageList}
-          options={({route}) => ({
-            title: route.params.name,
+          options={(props) => ({
+            title: props.route.params.name.title.toUpperCase(),
+            headerStyle: {
+              backgroundColor: TAB_COLOR.category,
+            },
+            headerTintColor: '#fff',
           })}
         />
       </Stack.Navigator>

@@ -55,7 +55,7 @@ const DrawerNavigation = () => {
   const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Home" component={Category} />
+      <Drawer.Screen name="Home" component={Home} />
       {/* <Drawer.Screen name="Privacy Policy" component={PrivacyPolicy} /> */}
     </Drawer.Navigator>
   );

@@ -13,12 +13,9 @@ export const RESOLUTION_PIXELS = {
   720: '720x1280',
   540: '540x960',
   480: '480x854',
-  480: '480x800',
   360: '360x640',
   320: '320x480',
-  320: '320x240',
   240: '240x400',
-  240: '240x320',
 };
 
 export const COLOR_SCHEME = {
@@ -33,6 +30,13 @@ export const TAB_ICONS = {
   category: 'compass',
   downloads: 'download-circle',
   profile: 'face-profile',
+};
+
+// #c97a3e
+export const TAB_COLOR = {
+  home: '#f4511e',
+  category: '#2c9913',
+  download: '#3568ba',
 };
 
 export const CATEGORIES = {
@@ -109,21 +113,63 @@ export const CATEGORY_LIST = [
     thumnail: require('./assets/thumbnails/marco.jpg'),
   },
   {
+    id: '16',
     title: 'minimalism',
     thumnail: require('./assets/thumbnails/minimalism.jpg'),
   },
   {
+    id: '17',
     title: 'motorcycles',
     thumnail: require('./assets/thumbnails/motorcycles.jpg'),
   },
-  {title: 'music', thumnail: require('./assets/thumbnails/music.jpg')},
-  {title: 'nature', thumnail: require('./assets/thumbnails/nature.jpg')},
-  {title: 'other', thumnail: require('./assets/thumbnails/other.jpg')},
-  {title: 'smilies', thumnail: require('./assets/thumbnails/smilies.jpg')},
-  {title: 'space', thumnail: require('./assets/thumbnails/space.jpg')},
-  {title: 'sport', thumnail: require('./assets/thumbnails/sport.jpg')},
-  {title: 'hi-tech', thumnail: require('./assets/thumbnails/hi-tech.jpg')},
-  {title: 'textures', thumnail: require('./assets/thumbnails/textures.jpg')},
-  {title: 'vector', thumnail: require('./assets/thumbnails/vector.jpg')},
-  {title: 'words', thumnail: require('./assets/thumbnails/words.jpg')},
+  {
+    id: '18',
+    title: 'music',
+    thumnail: require('./assets/thumbnails/music.jpg'),
+  },
+  {
+    id: '19',
+    title: 'nature',
+    thumnail: require('./assets/thumbnails/nature.jpg'),
+  },
+  {
+    id: '20',
+    title: 'other',
+    thumnail: require('./assets/thumbnails/other.jpg'),
+  },
+  {
+    id: '21',
+    title: 'smilies',
+    thumnail: require('./assets/thumbnails/smilies.jpg'),
+  },
+  {
+    id: '22',
+    title: 'space',
+    thumnail: require('./assets/thumbnails/space.jpg'),
+  },
+  {
+    id: '23',
+    title: 'sport',
+    thumnail: require('./assets/thumbnails/sport.jpg'),
+  },
+  {
+    id: '24',
+    title: 'hi-tech',
+    thumnail: require('./assets/thumbnails/hi-tech.jpg'),
+  },
+  {
+    id: '25',
+    title: 'textures',
+    thumnail: require('./assets/thumbnails/textures.jpg'),
+  },
+  {
+    id: '26',
+    title: 'vector',
+    thumnail: require('./assets/thumbnails/vector.jpg'),
+  },
+  {
+    id: '27',
+    title: 'words',
+    thumnail: require('./assets/thumbnails/words.jpg'),
+  },
 ];

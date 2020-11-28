@@ -9,7 +9,6 @@ import {
   Dimensions,
   NativeModules,
   Image,
-  Alert,
   View,
   Text,
 } from 'react-native';
@@ -29,19 +28,24 @@ const ImageModal = (props) => {
     } else if (type == 'both') {
       value = TYPE.BOTH;
     }
-    ManageWallpaper.setWallpaper(
-      {
-        uri: props.imageUri,
-      },
-      async (e) => {
-        await props.modalToggle(false);
-        await ToastAndroid.show(
-          'Wallpaper set successfully',
-          ToastAndroid.SHORT,
-        );
-      },
-      value,
-    );
+
+    try {
+      ManageWallpaper.setWallpaper(
+        {
+          uri: props.imageUri,
+        },
+        async (e) => {
+          await props.modalToggle(false);
+          await ToastAndroid.show(
+            'Wallpaper set successfully',
+            ToastAndroid.SHORT,
+          );
+        },
+        value,
+      );
+    } catch (e) {
+      ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);
+    }
   };
   const TYPE = {
     HOME: 'home',
@@ -59,7 +63,13 @@ const ImageModal = (props) => {
     },
   };
   const onDownloadHandler = async () => {
-    await SaveImageService(props.imageUri);
+    try {
+      await SaveImageService(props.imageUri);
+      await props.modalToggle(false);
+      await ToastAndroid.show('Wallpaper saved to gallery', ToastAndroid.SHORT);
+    } catch (e) {
+      ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);
+    }
   };
   return (
     <Fragment>

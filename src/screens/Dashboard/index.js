@@ -56,7 +56,7 @@ const Dashboard = (props) => {
         data={uri}
         numColumns={2}
         renderItem={renderListItem}
-        onEndReachedThreshold={0.4}
+        onEndReachedThreshold={0.5}
         keyExtractor={(item) => item.id}
         onEndReached={() => endScrolling()}
       />
