@@ -149,10 +149,10 @@ const styles = StyleSheet.create({
   },
   setWallpaper: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 30,
     right: 10,
   },
-  downloadWallpaper: {position: 'absolute', bottom: 10, left: 10},
+  downloadWallpaper: {position: 'absolute', bottom: 30, left: 10},
   modalSelectContainer: {
     flex: 1,
     justifyContent: 'center',

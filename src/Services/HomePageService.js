@@ -63,7 +63,10 @@ export const HomePageService = async (page = 1) => {
       '_' +
       tempHref[3] +
       '.jpg'; //creating a new download link by concatinating 3 datas
-    temp.push({id: tempHref[2], imageUri: createUrl});
+    temp.push({
+      id: tempHref[2] + '_' + (Math.floor(Math.random() * 90000) + 10000),
+      imageUri: createUrl,
+    });
   }
 
   return temp;

@@ -8,6 +8,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import Dashboard from '../screens/Dashboard';
 import DrawerNavigation from './DrawerNavigation';
 import TabsNavigation from './TabsNavigation';
+import CategoryImageList from '../screens/CategoryImageList';
 const Stack = createStackNavigator();
 const config = {
   animation: 'spring',
@@ -38,6 +39,13 @@ const MainRouting = (props) => {
           options={{
             headerShown: false,
           }}
+        />
+        <Stack.Screen
+          name="CategoryImageList"
+          component={CategoryImageList}
+          options={({route}) => ({
+            title: route.params.name,
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>

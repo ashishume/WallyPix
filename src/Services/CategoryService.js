@@ -43,34 +43,26 @@ const IdentifyScreenWidth = () => {
 const loadPageURL = async (category, page) => {
   await IdentifyScreenWidth();
   const searchUrl =
-    CATEGORY_BASE_URL + '/' + category + ScreenResolutionData + '/page' + page;
+    CATEGORY_BASE_URL + category + '/' + ScreenResolutionData + '/page' + page;
   const response = await fetch(searchUrl); // fetch page
   const htmlString = await response.text(); // get response text
-
   const $ = cheerio.load(htmlString); // parse HTML string
-  console.log(htmlString);
-
   return $('.wallpapers__item > .wallpapers__link');
 };
 
 export const CategoryService = async (category, page = 1) => {
-  // https://images.wallpaperscraft.com/image/car_blue_headlight_193447_720x1280.jpg   //sample image url
+  // https://images.wallpaperscraft.com/image/lion_muzzle_mane_120524_2160x3840.jpg  //sample category image url
 
   let temp = [];
   const data = await loadPageURL(category, page);
   for (let i = 0; i < data.length; i++) {
     const tempHref = data[i].attribs.href.toString().split('/'); //spliting the sample URL into 3 data based on slash
-
-    console.log(tempHref);
-    // const createUrl =
-    //   DOWNLOAD_BASE_URL +
-    //   tempHref[1] +
-    //   '/' +
-    //   tempHref[2] +
-    //   '_' +
-    //   tempHref[3] +
-    //   '.jpg'; //creating a new download link by concatinating 3 datas
-    // temp.push({id: tempHref[2], imageUri: createUrl});
+    const createUrl =
+      DOWNLOAD_BASE_URL + 'image/' + tempHref[2] + '_' + tempHref[3] + '.jpg'; //creating a new download link by concatinating 3 datas
+    temp.push({
+      id: tempHref[2] + '_' + (Math.floor(Math.random() * 90000) + 10000),
+      imageUri: createUrl,
+    });
   }
 
   return temp;
