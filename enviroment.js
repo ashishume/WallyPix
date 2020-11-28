@@ -44,6 +44,12 @@ export const FONT_FAMILY = {
   fontWeight: 'normal',
 };
 
+export const ADS_ID = {
+  bannerId: 'ca-app-pub-3743383597691737/3649344084',
+  InterstitialId: 'ca-app-pub-3743383597691737/8662013528',
+  welcomeId: 'ca-app-pub-3743383597691737/1538186068',
+};
+
 export const CATEGORIES = {
   '3d': '3d',
   abstract: 'abstract',

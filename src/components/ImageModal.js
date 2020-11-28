@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Fragment} from 'react';
 import {
   Modal,
@@ -14,10 +14,23 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SaveImageService} from '../Services/SaveImageService';
+import {deleteData, getData} from '../Services/StorageService';
 const {width, height} = Dimensions.get('window');
 
 const ImageModal = (props) => {
   const [show, setShow] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getData('downloaded_image');
+      if (data) {
+        const res = data.some((value) => value.id === props.imageId);
+        if (res == true) await setDownloaded(res);
+      }
+    };
+    fetchData();
+  }, []);
 
   const setWallpaper = (type) => {
     let value;
@@ -64,13 +77,19 @@ const ImageModal = (props) => {
   };
   const onDownloadHandler = async () => {
     try {
-      await SaveImageService(props.imageUri);
+      await SaveImageService(props);
       await props.modalToggle(false);
       await ToastAndroid.show('Wallpaper saved to gallery', ToastAndroid.SHORT);
     } catch (e) {
       ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);
     }
   };
+
+  const deleteFromGallery = async () => {
+    await deleteData(props, 'downloaded_image');
+    await props.modalToggle(false);
+  };
+
   return (
     <Fragment>
       {show == true ? (
@@ -127,15 +146,27 @@ const ImageModal = (props) => {
               }>
               <Icon size={60} color="#fff" name="wallpaper" />
             </TouchableOpacity>
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={() => onDownloadHandler()}
-              style={styles.downloadWallpaper}
-              onPressIn={() =>
-                ToastAndroid.show('Download wallpaper', ToastAndroid.SHORT)
-              }>
-              <Icon size={60} color="#fff" name="download-circle" />
-            </TouchableOpacity>
+            {downloaded == false ? (
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => onDownloadHandler()}
+                style={styles.downloadWallpaper}
+                onPressIn={() =>
+                  ToastAndroid.show('Download wallpaper', ToastAndroid.SHORT)
+                }>
+                <Icon size={60} color="#fff" name="download-circle" />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => deleteFromGallery()}
+                style={styles.downloadWallpaper}
+                onPressIn={() =>
+                  ToastAndroid.show('Delete', ToastAndroid.SHORT)
+                }>
+                <Icon size={60} color="#fff" name="delete-circle-outline" />
+              </TouchableOpacity>
+            )}
           </ImageBackground>
         ) : null}
       </Modal>

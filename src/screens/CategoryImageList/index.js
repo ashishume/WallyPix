@@ -12,6 +12,7 @@ const CategoryImageList = (props) => {
   const [page, setPage] = useState(1);
   const [visible, setIsVisible] = useState(false);
   const [imageUri, setImageUri] = useState('');
+  const [imageId, setImageId] = useState('');
   const [category, setCategory] = useState('');
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const CategoryImageList = (props) => {
   const imageClickHandler = async (e) => {
     await setIsVisible(true);
     await setImageUri(e.imageUri);
+    await setImageId(e.id);
   };
 
   const endScrolling = async () => {
@@ -58,6 +60,7 @@ const CategoryImageList = (props) => {
       {visible == true ? (
         <ImageModal
           imageUri={imageUri}
+          imageId={imageId}
           isVisible={visible}
           modalToggle={(e) => setIsVisible(e)}
         />

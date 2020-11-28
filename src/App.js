@@ -22,9 +22,9 @@ const App = () => {
           },
         );
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          console.log('You can use the camera');
+          console.log('You can use storage');
         } else {
-          console.log('Camera permission denied');
+          console.log('Storage permission denied');
         }
       } catch (err) {
         console.warn(err);

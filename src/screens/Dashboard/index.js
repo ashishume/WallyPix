@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Dimensions, PermissionsAndroid} from 'react-native';
+import {StyleSheet, View, Dimensions} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import ImageList from '../../components/ImageList';
 import {HomePageService} from '../../Services/HomePageService';
@@ -11,6 +11,7 @@ const Dashboard = (props) => {
   const [page, setPage] = useState(1);
   const [visible, setIsVisible] = useState(false);
   const [imageUri, setImageUri] = useState(false);
+  const [imageId, setImageId] = useState('');
 
   useEffect(() => {
     const fetchAllImages = async () => {
@@ -28,8 +29,9 @@ const Dashboard = (props) => {
   );
 
   const imageClickHandler = async (e) => {
-    await setIsVisible(true);
     await setImageUri(e.imageUri);
+    await setImageId(e.id);
+    await setIsVisible(true);
   };
 
   const endScrolling = async () => {
@@ -47,6 +49,7 @@ const Dashboard = (props) => {
       {visible == true ? (
         <ImageModal
           imageUri={imageUri}
+          imageId={imageId}
           isVisible={visible}
           modalToggle={(e) => setIsVisible(e)}
         />

@@ -60,7 +60,7 @@ export const CategoryService = async (category, page = 1) => {
     const createUrl =
       DOWNLOAD_BASE_URL + 'image/' + tempHref[2] + '_' + tempHref[3] + '.jpg'; //creating a new download link by concatinating 3 datas
     temp.push({
-      id: tempHref[2] + '_' + (Math.floor(Math.random() * 90000) + 10000),
+      id: tempHref[2],
       imageUri: createUrl,
     });
   }
