@@ -1,10 +1,26 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useEffect} from 'react';
+import {View, TouchableOpacity, Text} from 'react-native';
+import {CATEGORY_LIST} from '../../../enviroment';
+import {CategoryService} from '../../Services/CategoryService';
+const Category = (props) => {
+  useEffect(() => {});
 
-const Category = () => {
+  const selectCategoryHandler = (value) => {
+    CategoryService(value);
+  };
+
   return (
     <View>
-      <Text>Category</Text>
+      {CATEGORY_LIST.map((value, i) => {
+        return (
+          <TouchableOpacity
+            key={i}
+            activeOpacity={0.7}
+            onPress={() => selectCategoryHandler(value)}>
+            <Text style={{color: '#000'}}>{value.toUpperCase()}</Text>
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };

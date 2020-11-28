@@ -1,4 +1,5 @@
 export const HOME_PAGE_BASE_URL = 'https://wallpaperscraft.com/all/';
+export const CATEGORY_BASE_URL = 'https://wallpaperscraft.com/catalog/';
 export const DOWNLOAD_BASE_URL = 'https://images.wallpaperscraft.com/';
 
 export const RESOLUTION_PIXELS = {
@@ -33,3 +34,62 @@ export const TAB_ICONS = {
   downloads: 'download-circle',
   profile: 'face-profile',
 };
+
+export const CATEGORIES = {
+  '3d': '3d',
+  abstract: 'abstract',
+  animals: 'animals',
+  anime: 'anime',
+  art: 'art',
+  black: 'black',
+  cars: 'cars',
+  city: 'city',
+  dark: 'dark',
+  fantasy: 'fantasy',
+  flowers: 'flowers',
+  food: 'food',
+  holidays: 'holidays',
+  love: 'love',
+  macro: 'macro',
+  minimalism: 'minimalism',
+  motorcycles: 'motorcycles',
+  music: 'music',
+  nature: 'nature',
+  other: 'other',
+  smilies: 'smilies',
+  space: 'space',
+  sport: 'sport',
+  'hi-tech': 'hi-tech',
+  textures: 'textures',
+  vector: 'vector',
+  words: 'words',
+};
+export const CATEGORY_LIST = [
+  '3d',
+  'abstract',
+  'animals',
+  'anime',
+  'art',
+  'black',
+  'cars',
+  'city',
+  'dark',
+  'fantasy',
+  'flowers',
+  'food',
+  'holidays',
+  'love',
+  'macro',
+  'minimalism',
+  'motorcycles',
+  'music',
+  'nature',
+  'other',
+  'smilies',
+  'space',
+  'sport',
+  'hi-tech',
+  'textures',
+  'vector',
+  'words',
+];

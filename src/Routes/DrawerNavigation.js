@@ -8,6 +8,7 @@ import Home from '../screens/Home';
 // import Library from '../components/screens/Library/Library';
 // import FreeVideos from '../components/screens/FreeVideos/FreeVideos';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import Category from '../screens/Category';
 
 const Tab = createBottomTabNavigator();
 
@@ -54,7 +55,7 @@ const DrawerNavigation = () => {
   const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Home" component={Category} />
       {/* <Drawer.Screen name="Privacy Policy" component={PrivacyPolicy} /> */}
     </Drawer.Navigator>
   );
