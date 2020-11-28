@@ -1,18 +1,3 @@
-// import React from 'react';
-// import {View, Text} from 'react-native';
-// import ImageList from '../../components/ImageList';
-
-// const  = (props) => {
-//   console.log(props.route.params);
-//   return (
-//     <View>
-//       <ImageList imageUri={} imageClickHandler={} />
-//     </View>
-//   );
-// };
-
-// export default ;
-
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Dimensions, PermissionsAndroid} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
@@ -36,13 +21,13 @@ const CategoryImageList = (props) => {
     };
     fetchAllImages();
 
-    return () => {
-      setUri([]);
-      setPage(1);
-      setIsVisible(false);
-      setImageUri('');
-      setCategory('');
-    };
+    // return () => {
+    //   setUri([]);
+    //   setPage(1);
+    //   setIsVisible(false);
+    //   setImageUri('');
+    //   setCategory('');
+    // };
   }, []);
 
   const renderListItem = (data) => (

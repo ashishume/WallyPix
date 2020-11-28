@@ -2,6 +2,7 @@ import React from 'react';
 import {Fragment} from 'react';
 import {View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {FONT_FAMILY} from '../../../enviroment';
 
 const TopNavigation = (props) => {
   return (
@@ -34,10 +35,9 @@ const TopNavigation = (props) => {
           />
           <Text
             style={{
-              fontFamily: 'RobotoRegular',
+              ...FONT_FAMILY,
               fontSize: 28,
               paddingHorizontal: 5,
-              fontWeight: 'bold',
               flexGrow: 1,
             }}>
             {props.name}

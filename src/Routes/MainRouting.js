@@ -7,7 +7,7 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import TabsNavigation from './TabsNavigation';
 import CategoryImageList from '../screens/CategoryImageList';
-import {TAB_COLOR} from '../../enviroment';
+import {FONT_FAMILY, TAB_COLOR} from '../../enviroment';
 const Stack = createStackNavigator();
 const config = {
   animation: 'spring',
@@ -46,6 +46,9 @@ const MainRouting = () => {
             title: props.route.params.name.title.toUpperCase(),
             headerStyle: {
               backgroundColor: TAB_COLOR.category,
+            },
+            headerTitleStyle: {
+              ...FONT_FAMILY,
             },
             headerTintColor: '#fff',
           })}

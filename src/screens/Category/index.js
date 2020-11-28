@@ -1,17 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {Fragment} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   TouchableOpacity,
   StyleSheet,
   Text,
-  Image,
   Dimensions,
   ImageBackground,
   FlatList,
 } from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
-import {CATEGORY_LIST} from '../../../enviroment';
+import {CATEGORY_LIST, FONT_FAMILY} from '../../../enviroment';
 import {CategoryService} from '../../Services/CategoryService';
 const {width, height} = Dimensions.get('window');
 const Category = (props) => {
@@ -81,9 +78,7 @@ const styles = StyleSheet.create({
   cardText: {
     color: '#fff',
     fontSize: 45,
-    fontWeight: 'bold',
-    // textAlign: 'center',
-    fontFamily: 'Kodchasan-Regular',
+    ...FONT_FAMILY,
   },
   listItemStyle: {
     flex: 1,

@@ -39,6 +39,11 @@ export const TAB_COLOR = {
   download: '#3568ba',
 };
 
+export const FONT_FAMILY = {
+  fontFamily: 'Kodchasan-Regular',
+  fontWeight: 'normal',
+};
+
 export const CATEGORIES = {
   '3d': '3d',
   abstract: 'abstract',
