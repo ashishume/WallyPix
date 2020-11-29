@@ -62,7 +62,7 @@ const Dashboard = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getData('downloaded_image');
-      await setDownloaded(data);
+      if (data !== null) await setDownloaded(data);
     };
 
     const unsubscribe = props.navigation.addListener('focus', () => {

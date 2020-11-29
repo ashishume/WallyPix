@@ -7,8 +7,10 @@ import {
   StyleSheet,
   ToastAndroid,
   Dimensions,
+  BackHandler,
   NativeModules,
   Image,
+  Alert,
   View,
   Text,
 } from 'react-native';
@@ -16,11 +18,13 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SaveImageService} from '../Services/SaveImageService';
 import {deleteData, getData} from '../Services/StorageService';
 const {width, height} = Dimensions.get('window');
-
+import {InterstitialAd} from '@react-native-firebase/admob';
+import {ADS_ID} from '../../enviroment';
 const ImageModal = (props) => {
   const [show, setShow] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
 
+  const interstitial = InterstitialAd.createForAdRequest(ADS_ID.InterstitialId);
   useEffect(() => {
     const fetchData = async () => {
       const data = await getData('downloaded_image');
@@ -28,6 +32,8 @@ const ImageModal = (props) => {
         const res = data.some((value) => value.id === props.imageId);
         if (res == true) await setDownloaded(res);
       }
+
+      interstitial.load();
     };
     fetchData();
   }, []);
@@ -57,7 +63,8 @@ const ImageModal = (props) => {
         value,
       );
     } catch (e) {
-      ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);
+      console.log(e);
+      // ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);
     }
   };
   const TYPE = {
@@ -79,6 +86,7 @@ const ImageModal = (props) => {
     try {
       await SaveImageService(props);
       await props.modalToggle(false);
+      interstitial.show();
       await ToastAndroid.show('Wallpaper saved to gallery', ToastAndroid.SHORT);
     } catch (e) {
       ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);

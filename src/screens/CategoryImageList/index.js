@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Dimensions, PermissionsAndroid} from 'react-native';
+import {StyleSheet, View, Dimensions, ActivityIndicator} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
-import {FONT_FAMILY} from '../../../enviroment';
+import {ADS_ID, COLOR_SCHEME, FONT_FAMILY} from '../../../enviroment';
 import ImageList from '../../components/ImageList';
 import ImageModal from '../../components/ImageModal';
 import {CategoryService} from '../../Services/CategoryService';
+import {BannerAd, BannerAdSize} from '@react-native-firebase/admob';
 
 const {width, height} = Dimensions.get('window');
 const CategoryImageList = (props) => {
@@ -14,12 +15,13 @@ const CategoryImageList = (props) => {
   const [imageUri, setImageUri] = useState('');
   const [imageId, setImageId] = useState('');
   const [category, setCategory] = useState('');
-
+  const [isLoaded, setLoader] = useState(false);
   useEffect(() => {
     const fetchAllImages = async () => {
       await setCategory(props.route.params.name.title);
       const data = await CategoryService(props.route.params.name.title);
       await setUri(data);
+      await setLoader(true);
     };
     fetchAllImages();
 
@@ -55,6 +57,11 @@ const CategoryImageList = (props) => {
     });
   };
 
+  if (!isLoaded)
+    return (
+      <ActivityIndicator color={COLOR_SCHEME.primaryTextColor} size={60} />
+    );
+
   return (
     <View style={styles.container}>
       {visible == true ? (
@@ -65,6 +72,15 @@ const CategoryImageList = (props) => {
           modalToggle={(e) => setIsVisible(e)}
         />
       ) : null}
+      <View style={styles.adsContainer}>
+        <BannerAd
+          unitId={ADS_ID.bannerId}
+          size={BannerAdSize.FULL_BANNER}
+          requestOptions={{
+            requestNonPersonalizedAdsOnly: true,
+          }}
+        />
+      </View>
       <FlatList
         columnWrapperStyle={{justifyContent: 'space-between'}}
         data={uri}
@@ -83,6 +99,11 @@ const styles = StyleSheet.create({
     height: height,
     paddingBottom: 120,
     backgroundColor: '#fff',
+  },
+  adsContainer: {
+    justifyContent: 'center',
+    width: '100%',
+    textAlign: 'center',
   },
 });
 

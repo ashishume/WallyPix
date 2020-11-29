@@ -7,6 +7,7 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import TabsNavigation from './TabsNavigation';
 import CategoryImageList from '../screens/CategoryImageList';
+import SplashScreen from '../screens/SplashScreen';
 import {FONT_FAMILY, TAB_COLOR} from '../../enviroment';
 const Stack = createStackNavigator();
 const config = {
@@ -24,7 +25,7 @@ const MainRouting = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Dashboard"
+        initialRouteName="SplashScreen"
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           transitionSpec: {
@@ -32,6 +33,13 @@ const MainRouting = () => {
             close: config,
           },
         }}>
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
         <Stack.Screen
           name="Dashboard"
           component={TabsNavigation}

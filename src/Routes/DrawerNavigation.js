@@ -7,8 +7,9 @@ import Home from '../screens/Home';
 // import {IconStyles} from '../components/Styles';
 // import Library from '../components/screens/Library/Library';
 // import FreeVideos from '../components/screens/FreeVideos/FreeVideos';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import Category from '../screens/Category';
+import DrawerContent from './DrawerContent';
 
 const Tab = createBottomTabNavigator();
 
@@ -54,7 +55,9 @@ const Tab = createBottomTabNavigator();
 const DrawerNavigation = () => {
   const Drawer = createDrawerNavigator();
   return (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator
+      initialRouteName="Home"
+      drawerContent={(props) => <DrawerContent {...props} />}>
       <Drawer.Screen name="Home" component={Home} />
       {/* <Drawer.Screen name="Privacy Policy" component={PrivacyPolicy} /> */}
     </Drawer.Navigator>

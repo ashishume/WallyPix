@@ -9,8 +9,11 @@ import {
   FlatList,
 } from 'react-native';
 import {Fragment} from 'react/cjs/react.production.min';
-import {CATEGORY_LIST, FONT_FAMILY} from '../../../enviroment';
+import {CATEGORY_LIST, FONT_FAMILY, ADS_ID} from '../../../enviroment';
 import {CategoryService} from '../../Services/CategoryService';
+
+import {BannerAd, BannerAdSize} from '@react-native-firebase/admob';
+
 const {width, height} = Dimensions.get('window');
 const Category = (props) => {
   const [categoryImages, setCategoryImages] = useState([]);
@@ -45,6 +48,15 @@ const Category = (props) => {
   return (
     <Fragment>
       <Text style={styles.headerText}>Categories</Text>
+      <View style={styles.adsContainer}>
+        <BannerAd
+          unitId={ADS_ID.bannerId}
+          size={BannerAdSize.FULL_BANNER}
+          requestOptions={{
+            requestNonPersonalizedAdsOnly: true,
+          }}
+        />
+      </View>
       <FlatList
         data={CATEGORY_LIST}
         renderItem={renderCategoryListItem}
@@ -77,6 +89,10 @@ const styles = StyleSheet.create({
     shadowRadius: 9.11,
     elevation: 14,
     marginVertical: 10,
+  },
+  adsContainer: {
+    justifyContent: 'center',
+    width: '100%',
   },
   cardImage: {
     width: width - 20,
