@@ -52,9 +52,6 @@ const Category = (props) => {
         <BannerAd
           unitId={ADS_ID.bannerId}
           size={BannerAdSize.FULL_BANNER}
-          requestOptions={{
-            requestNonPersonalizedAdsOnly: true,
-          }}
         />
       </View>
       <FlatList

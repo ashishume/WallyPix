@@ -7,24 +7,22 @@ import {
   StyleSheet,
   ToastAndroid,
   Dimensions,
-  BackHandler,
   NativeModules,
   Image,
-  Alert,
   View,
   Text,
+  ActivityIndicator,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {COLOR_SCHEME} from '../../enviroment';
 import {SaveImageService} from '../Services/SaveImageService';
 import {deleteData, getData} from '../Services/StorageService';
 const {width, height} = Dimensions.get('window');
-import {InterstitialAd} from '@react-native-firebase/admob';
-import {ADS_ID} from '../../enviroment';
 const ImageModal = (props) => {
   const [show, setShow] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
+  const [showLoader, setLoader] = useState(false);
 
-  const interstitial = InterstitialAd.createForAdRequest(ADS_ID.InterstitialId);
   useEffect(() => {
     const fetchData = async () => {
       const data = await getData('downloaded_image');
@@ -32,13 +30,13 @@ const ImageModal = (props) => {
         const res = data.some((value) => value.id === props.imageId);
         if (res == true) await setDownloaded(res);
       }
-
-      interstitial.load();
     };
     fetchData();
   }, []);
 
-  const setWallpaper = (type) => {
+  const setWallpaper = async (type) => {
+    await setLoader(true);
+
     let value;
     if (type == 'home') {
       value = TYPE.HOME;
@@ -54,6 +52,7 @@ const ImageModal = (props) => {
           uri: props.imageUri,
         },
         async (e) => {
+          await setLoader(false);
           await props.modalToggle(false);
           await ToastAndroid.show(
             'Wallpaper set successfully',
@@ -63,8 +62,7 @@ const ImageModal = (props) => {
         value,
       );
     } catch (e) {
-      console.log(e);
-      // ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);
+      ToastAndroid.show('Wallpaper was unable to set', ToastAndroid.SHORT);
     }
   };
   const TYPE = {
@@ -84,12 +82,14 @@ const ImageModal = (props) => {
   };
   const onDownloadHandler = async () => {
     try {
+      await setLoader(true);
       await SaveImageService(props);
+      await setLoader(false);
       await props.modalToggle(false);
-      interstitial.show();
       await ToastAndroid.show('Wallpaper saved to gallery', ToastAndroid.SHORT);
     } catch (e) {
-      ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);
+      console.log(e);
+      ToastAndroid.show('Download failed', ToastAndroid.SHORT);
     }
   };
 
@@ -140,6 +140,14 @@ const ImageModal = (props) => {
           <ImageBackground
             source={{uri: props.imageUri}}
             style={styles.modalImageBackground}>
+            {showLoader == true ? (
+              <ActivityIndicator
+                size={40}
+                style={{marginTop: height / 2 - 50}}
+                color={COLOR_SCHEME.primaryBackgroundColor}
+              />
+            ) : null}
+
             <TouchableOpacity
               onPress={() => props.modalToggle(false)}
               style={styles.closeButton}>

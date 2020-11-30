@@ -1,10 +1,22 @@
-import React from 'react';
-import {View, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
 const {width, height} = Dimensions.get('window');
 import ProgressiveImage from '../components/ProgressiveImage';
 const ImageList = ({imageUri, imageClickHandler}) => {
+  // const [isLoadable, setLoadable] = useState(false);
+
+  // Linking.canOpenURL(imageUri).then((res) => {
+  //   setLoadable(res);
+  // });
   return (
     <View style={styles.container}>
+      {/* {isLoadable ? ( */}
       <TouchableOpacity activeOpacity={0.7} onPress={imageClickHandler}>
         <ProgressiveImage
           resizeMode="cover"
@@ -15,6 +27,7 @@ const ImageList = ({imageUri, imageClickHandler}) => {
           style={styles.image}
         />
       </TouchableOpacity>
+      {/* ) : null} */}
     </View>
   );
 };

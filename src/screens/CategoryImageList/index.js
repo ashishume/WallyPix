@@ -1,13 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Dimensions, ActivityIndicator} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  ActivityIndicator,
+  BackHandler,
+} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {ADS_ID, COLOR_SCHEME, FONT_FAMILY} from '../../../enviroment';
 import ImageList from '../../components/ImageList';
 import ImageModal from '../../components/ImageModal';
 import {CategoryService} from '../../Services/CategoryService';
-import {BannerAd, BannerAdSize} from '@react-native-firebase/admob';
+import {
+  BannerAd,
+  BannerAdSize,
+  InterstitialAd,
+  AdEventType,
+} from '@react-native-firebase/admob';
 
 const {width, height} = Dimensions.get('window');
+
+const interstitial = InterstitialAd.createForAdRequest(ADS_ID.InterstitialId);
+
 const CategoryImageList = (props) => {
   const [uri, setUri] = useState([]);
   const [page, setPage] = useState(1);
@@ -16,22 +30,19 @@ const CategoryImageList = (props) => {
   const [imageId, setImageId] = useState('');
   const [category, setCategory] = useState('');
   const [isLoaded, setLoader] = useState(false);
+
   useEffect(() => {
     const fetchAllImages = async () => {
       await setCategory(props.route.params.name.title);
       const data = await CategoryService(props.route.params.name.title);
       await setUri(data);
       await setLoader(true);
+      setTimeout(() => {
+        interstitial.show();
+      }, 3000);
     };
     fetchAllImages();
-
-    // return () => {
-    //   setUri([]);
-    //   setPage(1);
-    //   setIsVisible(false);
-    //   setImageUri('');
-    //   setCategory('');
-    // };
+    interstitial.load();
   }, []);
 
   const renderListItem = (data) => (
@@ -73,13 +84,7 @@ const CategoryImageList = (props) => {
         />
       ) : null}
       <View style={styles.adsContainer}>
-        <BannerAd
-          unitId={ADS_ID.bannerId}
-          size={BannerAdSize.FULL_BANNER}
-          requestOptions={{
-            requestNonPersonalizedAdsOnly: true,
-          }}
-        />
+        <BannerAd unitId={ADS_ID.bannerId} size={BannerAdSize.FULL_BANNER} />
       </View>
       <FlatList
         columnWrapperStyle={{justifyContent: 'space-between'}}
@@ -90,14 +95,14 @@ const CategoryImageList = (props) => {
         keyExtractor={(item) => item.id}
         onEndReached={() => endScrolling()}
       />
+      <BannerAd unitId={ADS_ID.bannerId} size={BannerAdSize.FULL_BANNER} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: height,
-    paddingBottom: 120,
+    height: height - 55,
     backgroundColor: '#fff',
   },
   adsContainer: {
