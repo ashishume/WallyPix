@@ -1,10 +1,21 @@
 import React from 'react';
 import {Fragment} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Share, ToastAndroid} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {FONT_FAMILY} from '../../../enviroment';
+import {FONT_FAMILY, LINKS} from '../../../enviroment';
 
 const TopNavigation = (props) => {
+  const onShareHandler = async () => {
+    try {
+      await Share.share({
+        message: `Hey, I just found out a awesome wallpaper app, WallyPix, Checkout: ${LINKS.googlePlayAppLink}   `,
+      });
+    } catch (error) {
+      ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);
+    }
+  };
+
   return (
     <Fragment>
       <View
@@ -34,6 +45,15 @@ const TopNavigation = (props) => {
               flexGrow: 1,
             }}>
             {props.name}
+          </Text>
+          <Text
+            style={{
+              ...FONT_FAMILY,
+              fontSize: 40,
+            }}>
+            <TouchableOpacity onPress={() => onShareHandler()}>
+              <Icon name="share-social" size={40} />
+            </TouchableOpacity>
           </Text>
         </View>
       </View>

@@ -1,22 +1,21 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Linking} from 'react-native';
-import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import {FONT_FAMILY} from '../../enviroment';
+import {FONT_FAMILY, LINKS} from '../../enviroment';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const DrawerContent = (props) => {
   const pressHandler = (value) => {
     switch (value) {
       case 'facebook':
-        Linking.openURL('https://www.facebook.com/ashishdevume/');
+        Linking.openURL(LINKS.facebook);
         break;
       case 'instagram':
-        Linking.openURL('https://www.instagram.com/ashishdevume/');
+        Linking.openURL(LINKS.instagram);
         break;
       case 'rate':
-        Linking.openURL('https://play.google.com/store');
+        Linking.openURL(LINKS.googlePlayAppLink);
         break;
       case 'report-bug':
-        Linking.openURL('http://wa.me/918557098095');
+        Linking.openURL(LINKS.whatsApp);
         break;
     }
   };

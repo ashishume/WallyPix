@@ -50,6 +50,13 @@ export const ADS_ID = {
   welcomeId: 'ca-app-pub-3743383597691737/1538186068',
 };
 
+export const LINKS = {
+  facebook: 'https://www.facebook.com/ashishdevume/',
+  instagram: 'https://www.instagram.com/ashishdevume/',
+  whatsApp: 'http://wa.me/918557098095',
+  googlePlayAppLink: 'https://play.google.com/store',
+};
+
 export const CATEGORIES = {
   '3d': '3d',
   abstract: 'abstract',
