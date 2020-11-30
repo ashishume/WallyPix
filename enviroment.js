@@ -54,7 +54,7 @@ export const LINKS = {
   facebook: 'https://www.facebook.com/ashishdevume/',
   instagram: 'https://www.instagram.com/ashishdevume/',
   whatsApp: 'http://wa.me/918557098095',
-  googlePlayAppLink: 'https://play.google.com/store',
+  googlePlayAppLink: 'https://play.google.com/store/apps/details?id=com.wallypix',
 };
 
 export const CATEGORIES = {

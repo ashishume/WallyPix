@@ -1,7 +1,9 @@
 import React, {Fragment, useEffect} from 'react';
 import MainRouting from './Routes/MainRouting';
 import {StatusBar, PermissionsAndroid} from 'react-native';
-
+import {fcmService} from './Services/FCMService';
+import {localNotificationService} from './Services/LocalNotificationService';
+// import {AddFCMToken} from './store/actions/fcmService';
 const App = () => {
   useEffect(() => {
     const requestStoragePermission = async () => {
@@ -32,6 +34,35 @@ const App = () => {
     };
 
     requestStoragePermission();
+
+    // fcmService.register(onRegister, onNotification, onOpenNotification);
+    // localNotificationService.configure(onOpenNotification);
+
+    // function onRegister(token) {
+    //   console.log(token);
+    //   // AddFCMToken(token);
+    // }
+
+    // function onNotification(notify) {
+    //   const options = {
+    //     soundName: 'default',
+    //     playSound: true, //,
+    //   };
+    //   localNotificationService.showNotification(
+    //     0,
+    //     notify.title,
+    //     notify.body,
+    //     notify,
+    //     options,
+    //   );
+    // }
+
+    // function onOpenNotification(notify) {}
+
+    // return () => {
+    //   fcmService.unRegister();
+    //   localNotificationService.unregister();
+    // };
   }, []);
 
   return (
