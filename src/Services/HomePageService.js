@@ -16,14 +16,8 @@ let ScreenResolutionData = '';
 const IdentifyScreenWidth = () => {
   const screenWidth = SCREEN_WIDTH_RESOLUTION;
   switch (screenWidth) {
-    case 2160:
-      ScreenResolutionData = RESOLUTION_PIXELS[1366];
-      break;
     case 1440:
-      ScreenResolutionData = RESOLUTION_PIXELS[1080];
-      break;
-    case 1366:
-      ScreenResolutionData = RESOLUTION_PIXELS[1080];
+      ScreenResolutionData = RESOLUTION_PIXELS[1440];
       break;
     case 1080:
       ScreenResolutionData = RESOLUTION_PIXELS[1080];
@@ -35,7 +29,7 @@ const IdentifyScreenWidth = () => {
       ScreenResolutionData = RESOLUTION_PIXELS[960];
       break;
     default:
-      ScreenResolutionData = RESOLUTION_PIXELS[1024];
+      ScreenResolutionData = RESOLUTION_PIXELS[1080];
   }
 };
 
@@ -55,20 +49,20 @@ export const HomePageService = async (page = 1) => {
   const data = await loadGraphicCards(page);
   for (let i = 0; i < data.length; i++) {
     const tempHref = data[i].attribs.href.toString().split('/'); //spliting the sample URL into 3 data based on slash
+    console.log(tempHref);
     const createUrl =
       DOWNLOAD_BASE_URL +
-      tempHref[1] +
+      'image' +
       '/' +
       tempHref[2] +
       '_' +
       tempHref[3] +
       '.jpg'; //creating a new download link by concatinating 3 datas
+
     temp.push({
       id: tempHref[2],
-      // id: tempHref[2] + '_' + (Math.floor(Math.random() * 90000) + 10000),
       imageUri: createUrl,
     });
   }
-
   return temp;
 };

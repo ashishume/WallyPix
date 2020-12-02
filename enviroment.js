@@ -3,13 +3,8 @@ export const CATEGORY_BASE_URL = 'https://wallpaperscraft.com/catalog/';
 export const DOWNLOAD_BASE_URL = 'https://images.wallpaperscraft.com/';
 
 export const RESOLUTION_PIXELS = {
-  2160: '2160x3840',
   1440: '1440x2560',
-  1366: '1366x768',
   1080: '1080x1920',
-  1024: '1024x600',
-  960: '960x544',
-  800: '800x600',
   720: '720x1280',
   540: '540x960',
   480: '480x854',
@@ -54,7 +49,8 @@ export const LINKS = {
   facebook: 'https://www.facebook.com/ashishdevume/',
   instagram: 'https://www.instagram.com/ashishdevume/',
   whatsApp: 'http://wa.me/918557098095',
-  googlePlayAppLink: 'https://play.google.com/store/apps/details?id=com.wallypix',
+  googlePlayAppLink:
+    'https://play.google.com/store/apps/details?id=com.wallypix',
 };
 
 export const CATEGORIES = {

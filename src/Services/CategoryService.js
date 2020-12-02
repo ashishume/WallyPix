@@ -17,14 +17,8 @@ let ScreenResolutionData = '';
 const IdentifyScreenWidth = () => {
   const screenWidth = SCREEN_WIDTH_RESOLUTION;
   switch (screenWidth) {
-    case 2160:
-      ScreenResolutionData = RESOLUTION_PIXELS[1366];
-      break;
     case 1440:
-      ScreenResolutionData = RESOLUTION_PIXELS[1080];
-      break;
-    case 1366:
-      ScreenResolutionData = RESOLUTION_PIXELS[1080];
+      ScreenResolutionData = RESOLUTION_PIXELS[1440];
       break;
     case 1080:
       ScreenResolutionData = RESOLUTION_PIXELS[1080];
@@ -36,7 +30,7 @@ const IdentifyScreenWidth = () => {
       ScreenResolutionData = RESOLUTION_PIXELS[960];
       break;
     default:
-      ScreenResolutionData = RESOLUTION_PIXELS[1024];
+      ScreenResolutionData = RESOLUTION_PIXELS[1080];
   }
 };
 
@@ -64,6 +58,5 @@ export const CategoryService = async (category, page = 1) => {
       imageUri: createUrl,
     });
   }
-
   return temp;
 };
