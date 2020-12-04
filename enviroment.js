@@ -2,6 +2,7 @@ export const HOME_PAGE_BASE_URL = 'https://wallpaperscraft.com/all/';
 export const CATEGORY_BASE_URL = 'https://wallpaperscraft.com/catalog/';
 export const DOWNLOAD_BASE_URL = 'https://images.wallpaperscraft.com/';
 
+export const GOOGLE_DRIVE_LINK = 'https://lh3.googleusercontent.com/d/';
 export const RESOLUTION_PIXELS = {
   1440: '1440x2560',
   1080: '1080x1920',
@@ -43,6 +44,7 @@ export const ADS_ID = {
   bannerId: 'ca-app-pub-3743383597691737/3649344084',
   InterstitialId: 'ca-app-pub-3743383597691737/8662013528',
   welcomeId: 'ca-app-pub-3743383597691737/1538186068',
+  rewardId: 'ca-app-pub-3743383597691737/4164349403',
 };
 
 export const LINKS = {
@@ -86,104 +88,104 @@ export const CATEGORY_LIST = [
   {
     id: '1',
     title: '3d',
-    thumnail: require('./assets/thumbnails/threedimension.jpg'),
+    thumnail: '15mBF3LayVM2OJTLMQisHwCqeusVdiqnV',
   },
   {
     id: '2',
     title: 'abstract',
-    thumnail: require('./assets/thumbnails/abstract.jpg'),
+    thumnail: '1oZXloxfzAoIO3Y5CPKnUEawpiyk-AiWq',
   },
   {
     id: '3',
     title: 'animals',
-    thumnail: require('./assets/thumbnails/animals.jpg'),
+    thumnail: '1iEmT9MA-XiqimZMBQPHEGJ6IgkKX9bMb',
   },
-  {id: '4', title: 'anime', thumnail: require('./assets/thumbnails/anime.jpg')},
-  {id: '5', title: 'art', thumnail: require('./assets/thumbnails/art.jpg')},
-  {id: '6', title: 'black', thumnail: require('./assets/thumbnails/black.jpg')},
-  {id: '7', title: 'cars', thumnail: require('./assets/thumbnails/cars.jpg')},
-  {id: '8', title: 'city', thumnail: require('./assets/thumbnails/city.jpg')},
-  {id: '9', title: 'dark', thumnail: require('./assets/thumbnails/dark.jpg')},
+  {id: '4', title: 'anime', thumnail: '194sg4MwY7ZE6sZnRE1jleFoGc1Mn7brl'},
+  {id: '5', title: 'art', thumnail: '1yVk4Cq_2dogOGZmdi3R7uFb_SrgrofuN'},
+  {id: '6', title: 'black', thumnail: '1xNW3ePqg7_snh1-gyAq1Y9W4BeDpPif6'},
+  {id: '7', title: 'cars', thumnail: '14SPgS_l3QsTGFexvrkYDXWZ-YKCh5Ihp'},
+  {id: '8', title: 'city', thumnail: '1-D-Q97vJ2EEfnkMYWtGSYrHe3CSELYQy'},
+  {id: '9', title: 'dark', thumnail: '1apIxFC06SohnSxnlh-ewGcwgcjN_7eAz'},
   {
     id: '10',
     title: 'fantasy',
-    thumnail: require('./assets/thumbnails/fantasy.jpg'),
+    thumnail: '10-UAK_b6u99f0CbCvuC4FogK82jW2bHe',
   },
   {
     id: '11',
     title: 'flowers',
-    thumnail: require('./assets/thumbnails/flowers.jpg'),
+    thumnail: '1G7x15HucQjXoqSzliKuVcBj8zSs8Cz5q',
   },
-  {id: '12', title: 'food', thumnail: require('./assets/thumbnails/food.jpg')},
+  {id: '12', title: 'food', thumnail: '1IvoqgxAMGuT1NzSG6jaY6JDQYFsWLIX2'},
   {
     id: '13',
     title: 'holidays',
-    thumnail: require('./assets/thumbnails/holidays.jpg'),
+    thumnail: '1R17iSo0oD-Qoos8Aed5WeWGicavcBHij',
   },
-  {id: '14', title: 'love', thumnail: require('./assets/thumbnails/love.jpg')},
+  {id: '14', title: 'love', thumnail: '1sM9h9bjnSSvUObBk_jig4Zzb3mJQvihX'},
   {
     id: '15',
     title: 'macro',
-    thumnail: require('./assets/thumbnails/marco.jpg'),
+    thumnail: '1rutRacGSVGx1uT2c4__Koa5CCabism2P',
   },
   {
     id: '16',
     title: 'minimalism',
-    thumnail: require('./assets/thumbnails/minimalism.jpg'),
+    thumnail: '1YRskw7be4r4PfSIWT25QZcS2z828TRHY',
   },
   {
     id: '17',
     title: 'motorcycles',
-    thumnail: require('./assets/thumbnails/motorcycles.jpg'),
+    thumnail: '1jyjnvZ8LKU6LfUJtUPoNfeMa3cBpHvwX',
   },
   {
     id: '18',
     title: 'music',
-    thumnail: require('./assets/thumbnails/music.jpg'),
+    thumnail: '10nKHsqbNOT7Z8a-NhuJeSGz8tYat7C-E',
   },
   {
     id: '19',
     title: 'nature',
-    thumnail: require('./assets/thumbnails/nature.jpg'),
+    thumnail: '1RSF5UwJOyqk1ni_Y6xIVCB0N-uyjA2Dd',
   },
   {
     id: '20',
     title: 'other',
-    thumnail: require('./assets/thumbnails/other.jpg'),
+    thumnail: '1N6px9yfMZoe7xz1fE3IzwnjiajBA5gmV',
   },
   {
     id: '21',
     title: 'smilies',
-    thumnail: require('./assets/thumbnails/smilies.jpg'),
+    thumnail: '1b_oDpgeruLBud_GrSrIjTUrSXVFhw1PV',
   },
   {
     id: '22',
     title: 'space',
-    thumnail: require('./assets/thumbnails/space.jpg'),
+    thumnail: '1LfSY4kFjPkssIrK9G-Jx_weUOOJ3NCFa',
   },
   {
     id: '23',
     title: 'sport',
-    thumnail: require('./assets/thumbnails/sport.jpg'),
+    thumnail: '1Zwb1gjJb4lf2mev0V5JxoayKDEAmn9Zu',
   },
   {
     id: '24',
     title: 'hi-tech',
-    thumnail: require('./assets/thumbnails/hi-tech.jpg'),
+    thumnail: '1gwJ2pIVZ9Y7cT0q8YyB_rdJupCINL17H',
   },
   {
     id: '25',
     title: 'textures',
-    thumnail: require('./assets/thumbnails/textures.jpg'),
+    thumnail: '1kbckFM5QWicwBSqwuBYs1IHMpTxwgQ2-',
   },
   {
     id: '26',
     title: 'vector',
-    thumnail: require('./assets/thumbnails/vector.jpg'),
+    thumnail: '1grT-br8Mw4Y6dILn41L7WSw6_7oTMgwx',
   },
   {
     id: '27',
     title: 'words',
-    thumnail: require('./assets/thumbnails/words.jpg'),
+    thumnail: '1MUY7FtB7kslJluwk808HZ2TTBzCpNeqN',
   },
 ];

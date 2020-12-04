@@ -49,7 +49,6 @@ export const HomePageService = async (page = 1) => {
   const data = await loadGraphicCards(page);
   for (let i = 0; i < data.length; i++) {
     const tempHref = data[i].attribs.href.toString().split('/'); //spliting the sample URL into 3 data based on slash
-    console.log(tempHref);
     const createUrl =
       DOWNLOAD_BASE_URL +
       'image' +

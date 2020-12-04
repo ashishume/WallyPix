@@ -5,6 +5,7 @@ import {
   Dimensions,
   ActivityIndicator,
   BackHandler,
+  Text,
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {ADS_ID, COLOR_SCHEME, FONT_FAMILY} from '../../../enviroment';

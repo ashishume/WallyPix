@@ -1,8 +1,8 @@
 import React, {Fragment, useEffect} from 'react';
 import MainRouting from './Routes/MainRouting';
 import {StatusBar, PermissionsAndroid} from 'react-native';
-import {fcmService} from './Services/FCMService';
-import {localNotificationService} from './Services/LocalNotificationService';
+// import {fcmService} from './Services/FCMService';
+// import {localNotificationService} from './Services/LocalNotificationService';
 // import {AddFCMToken} from './store/actions/fcmService';
 const App = () => {
   useEffect(() => {
