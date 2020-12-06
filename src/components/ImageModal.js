@@ -88,7 +88,7 @@ const ImageModal = (props) => {
       await props.modalToggle(false);
       await ToastAndroid.show('Wallpaper saved to gallery', ToastAndroid.SHORT);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       ToastAndroid.show('Download failed', ToastAndroid.SHORT);
     }
   };
