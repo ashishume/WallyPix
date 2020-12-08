@@ -3,6 +3,10 @@ export const CATEGORY_BASE_URL = 'https://wallpaperscraft.com/catalog/';
 export const DOWNLOAD_BASE_URL = 'https://images.wallpaperscraft.com/';
 
 export const GOOGLE_DRIVE_LINK = 'https://lh3.googleusercontent.com/d/';
+
+export const AUTHORISATION =
+  '563492ad6f91700001000001d6985e49e1424b35a096ff1d76d92ad6';
+
 export const RESOLUTION_PIXELS = {
   1440: '1440x2560',
   1080: '1080x1920',
