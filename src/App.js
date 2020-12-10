@@ -26,8 +26,8 @@ const App = () => {
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
           // console.log('You can use storage');
         } else {
-          ToastAndroid.show('Storage permission required', ToastAndroid.LONG);
-          // console.log('Storage permission denied');
+          // ToastAndroid.show('Storage permission required', ToastAndroid.LONG);
+          console.log('Storage permission denied');
         }
       } catch (err) {
         console.warn(err);

@@ -2,7 +2,7 @@ import React from 'react';
 import {Fragment} from 'react';
 import {View, Text, Share, ToastAndroid} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {FONT_FAMILY, LINKS} from '../../../enviroment';
 
 const TopNavigation = (props) => {
@@ -15,9 +15,9 @@ const TopNavigation = (props) => {
       ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);
     }
   };
-  const onSearchHandler=()=>{
+  const onSearchHandler = () => {
     props.navigation.navigate('SearchScreen');
-  }
+  };
 
   return (
     <Fragment>
@@ -36,7 +36,7 @@ const TopNavigation = (props) => {
             paddingHorizontal: 10,
           }}>
           <Icon
-            name="menu-outline"
+            name="menu"
             size={40}
             onPress={() => props.navigation.toggleDrawer()}
           />
@@ -56,7 +56,7 @@ const TopNavigation = (props) => {
               paddingRight: 10,
             }}>
             <TouchableOpacity onPress={() => onSearchHandler()}>
-              <Icon name="search" size={40} />
+              <Icon name="image-search-outline" size={40} />
             </TouchableOpacity>
           </Text>
           <Text
@@ -65,7 +65,7 @@ const TopNavigation = (props) => {
               fontSize: 40,
             }}>
             <TouchableOpacity onPress={() => onShareHandler()}>
-              <Icon name="share-social" size={40} />
+              <Icon name="share-variant" size={40} />
             </TouchableOpacity>
           </Text>
         </View>
