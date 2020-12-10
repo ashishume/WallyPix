@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect} from 'react';
 import MainRouting from './Routes/MainRouting';
-import {StatusBar, PermissionsAndroid} from 'react-native';
+import {StatusBar, PermissionsAndroid, ToastAndroid} from 'react-native';
 // import {fcmService} from './Services/FCMService';
 // import {localNotificationService} from './Services/LocalNotificationService';
 // import {AddFCMToken} from './store/actions/fcmService';
@@ -26,6 +26,7 @@ const App = () => {
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
           // console.log('You can use storage');
         } else {
+          ToastAndroid.show('Storage permission required', ToastAndroid.LONG);
           // console.log('Storage permission denied');
         }
       } catch (err) {

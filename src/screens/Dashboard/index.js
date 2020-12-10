@@ -4,10 +4,7 @@ import {
   View,
   Dimensions,
   ActivityIndicator,
-  BackHandler,
-  Alert,
   FlatList,
-  ToastAndroid,
 } from 'react-native';
 import ImageList from '../../components/ImageList';
 import {HomePageService} from '../../Services/HomePageService';

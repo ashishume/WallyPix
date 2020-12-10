@@ -1,43 +1,36 @@
-// import React from 'react';
-// import {View, Text} from 'react-native';
-
-// const SearchScreen = () => {
-//   return (
-//     <View>
-//         <Inpu
-//       <Text>Search</Text>
-//     </View>
-//   );
-// };
-
-// export default SearchScreen;
 import ImageList from '../../components/ImageList';
 import React, {useState, useRef} from 'react';
-import {View, TextInput, StyleSheet, FlatList} from 'react-native';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  FlatList,
+  ActivityIndicator,
+} from 'react-native';
 import {searchPexelsPictures} from '../../Services/PexelsService';
 import ImageModal from '../../components/ImageModal';
-// import {} from 'react-native-gesture-handler';
-// import Http from '../../API/HttpService';
-// import CourseCardListItem from './MyCourses/CourseCardListItem';
+import {COLOR_SCHEME, FONT_FAMILY} from '../../../enviroment';
 const Search = (props) => {
   const [data, setData] = useState([]);
   const previousSearchTermRef = useRef('');
   const [visible, setIsVisible] = useState(false);
   const [page, setPage] = useState(1);
+  const [imageUri, setImageUri] = useState(false);
+  const [imageId, setImageId] = useState('');
+  const [isLoaded, setLoader] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const setDebouncedSearchTerm = (value) => {
+    setLoader(true);
     previousSearchTermRef.current = value;
     setTimeout(async () => {
       if (previousSearchTermRef.current === value) {
         await setSearchTerm(value);
-        const respData = await searchPexelsPictures(page, value);
+        const respData = await searchPexelsPictures(value, page);
+        setLoader(false);
         setData(respData);
       }
     }, 500);
   };
-  //   const courseEventHandler = (value) => {
-  //     props.navigation.navigate('CourseDetails', value);
-  //   };
 
   const renderListItem = (data) => {
     return (
@@ -49,7 +42,7 @@ const Search = (props) => {
   };
 
   const imageClickHandler = async (e) => {
-    await setImageUri(e.imageUri);
+    await setImageUri(e.photoUrl);
     await setImageId(e.id);
     await setIsVisible(true);
   };
@@ -90,6 +83,10 @@ const Search = (props) => {
         keyExtractor={(item) => item.id}
         onEndReached={() => endScrolling()}
       />
+
+      {isLoaded ? (
+        <ActivityIndicator color={COLOR_SCHEME.primaryTextColor} size={60} />
+      ) : null}
     </View>
   );
 };
@@ -99,7 +96,11 @@ export default Search;
 const styles = StyleSheet.create({
   input: {
     color: '#000',
-    fontSize: 15,
+    fontSize: 18,
+    ...FONT_FAMILY,
+    marginTop: 10,
+    height: 60,
+    fontWeight: 'normal',
     borderBottomColor: '#000',
     //shadow
     backgroundColor: '#fff',
