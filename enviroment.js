@@ -4,8 +4,14 @@ export const DOWNLOAD_BASE_URL = 'https://images.wallpaperscraft.com/';
 
 export const GOOGLE_DRIVE_LINK = 'https://lh3.googleusercontent.com/d/';
 
+//PEXELS ENV VARIABLES--------------------------------------
+
 export const AUTHORISATION =
   '563492ad6f91700001000001d6985e49e1424b35a096ff1d76d92ad6';
+
+export const PEXELS_PHOTO_BASE_URL = 'https://api.pexels.com/v1/';
+
+//PEXELS ENV VARIABLES--------------------------------------
 
 export const RESOLUTION_PIXELS = {
   1440: '1440x2560',
@@ -27,6 +33,7 @@ export const COLOR_SCHEME = {
 
 export const TAB_ICONS = {
   home: 'wallpaper',
+  topRated: 'monitor-star',
   category: 'compass',
   downloads: 'download-circle',
   profile: 'face-profile',
@@ -37,6 +44,7 @@ export const TAB_COLOR = {
   home: '#f4511e',
   category: '#2c9913',
   download: '#3568ba',
+  topRated: '#7847b7',
 };
 
 export const FONT_FAMILY = {
@@ -59,6 +67,7 @@ export const LINKS = {
     'https://play.google.com/store/apps/details?id=com.wallypix',
 };
 
+//wallscraft category list
 export const CATEGORIES = {
   '3d': '3d',
   abstract: 'abstract',
@@ -88,6 +97,7 @@ export const CATEGORIES = {
   vector: 'vector',
   words: 'words',
 };
+
 export const CATEGORY_LIST = [
   {
     id: '1',

@@ -1,47 +1,47 @@
 import React, {useEffect, useState} from 'react';
+import {loadPexelsPictures} from '../../Services/PexelsService';
 import {
   StyleSheet,
   View,
   Dimensions,
   ActivityIndicator,
-  BackHandler,
-  Alert,
+  Text,
   FlatList,
-  ToastAndroid,
 } from 'react-native';
 import ImageList from '../../components/ImageList';
-import {HomePageService} from '../../Services/HomePageService';
 import ImageModal from '../../components/ImageModal';
-import {ADS_ID, COLOR_SCHEME} from '../../../enviroment';
+import {ADS_ID, COLOR_SCHEME, FONT_FAMILY} from '../../../enviroment';
 const {width, height} = Dimensions.get('window');
-
-const Dashboard = (props) => {
+import {BannerAd, BannerAdSize} from '@react-native-firebase/admob';
+const TopRated = (props) => {
   const [uri, setUri] = useState([]);
   const [page, setPage] = useState(1);
   const [visible, setIsVisible] = useState(false);
   const [imageUri, setImageUri] = useState(false);
   const [imageId, setImageId] = useState('');
   const [isLoaded, setLoader] = useState(false);
-  const [isFetching, setIsFetching] = useState(false);
 
+  const [isFetching, setIsFetching] = useState(false);
   useEffect(() => {
-    const fetchAllImages = async () => {
-      const data = await HomePageService();
-      await setUri(data);
+    const fetchPhotos = async () => {
+      const data = await loadPexelsPictures();
+      setUri(data);
       await setLoader(true);
     };
-    fetchAllImages();
+    fetchPhotos();
   }, []);
 
-  const renderListItem = (data) => (
-    <ImageList
-      imageClickHandler={() => imageClickHandler(data.item)}
-      imageUri={data.item.imageUri}
-    />
-  );
+  const renderListItem = (data) => {
+    return (
+      <ImageList
+        imageClickHandler={() => imageClickHandler(data.item)}
+        imageUri={data.item.photoUrl}
+      />
+    );
+  };
 
   const imageClickHandler = async (e) => {
-    await setImageUri(e.imageUri);
+    await setImageUri(e.photoUrl);
     await setImageId(e.id);
     await setIsVisible(true);
   };
@@ -50,7 +50,7 @@ const Dashboard = (props) => {
     await setPage((prev) => {
       return prev + 1;
     });
-    const lazyData = await HomePageService(page);
+    const lazyData = await loadPexelsPictures(page);
     await setUri((prevData) => {
       return [...prevData, ...lazyData];
     });
@@ -58,7 +58,7 @@ const Dashboard = (props) => {
 
   const onRefresh = async () => {
     await setIsFetching(true);
-    const data = await HomePageService();
+    const data = await loadPexelsPictures();
     await setUri(data);
     await setLoader(true);
     await setIsFetching(false);
@@ -71,6 +71,8 @@ const Dashboard = (props) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.headerText}>Top rated</Text>
+      <BannerAd unitId={ADS_ID.bannerId} size={BannerAdSize.FULL_BANNER} />
       {visible == true ? (
         <ImageModal
           imageUri={imageUri}
@@ -97,9 +99,14 @@ const Dashboard = (props) => {
 const styles = StyleSheet.create({
   container: {
     height: height,
-    paddingBottom: 120,
+    paddingBottom: 80,
     backgroundColor: '#fff',
+  },
+  headerText: {
+    ...FONT_FAMILY,
+    fontSize: 40,
+    paddingHorizontal: 10,
   },
 });
 
-export default Dashboard;
+export default TopRated;

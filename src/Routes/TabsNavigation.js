@@ -1,10 +1,11 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DrawerNavigation from './DrawerNavigation';
 import Category from '../screens/Category';
 import Downloads from '../screens/Downloads';
-import Profile from '../screens/Profile';
+// import Profile from '../screens/Profile';
+import TopRated from '../screens/TopRated';
 import {COLOR_SCHEME, TAB_COLOR, TAB_ICONS} from '../../enviroment';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 
@@ -19,12 +20,13 @@ const TabsNavigation = () => {
           let iconName;
           if (route.name === 'Home') {
             iconName = TAB_ICONS.home;
+          } else if (route.name === 'Top Rated') {
+            iconName = TAB_ICONS.topRated;
           } else if (route.name === 'Category') {
             iconName = TAB_ICONS.category;
           } else if (route.name === 'Downloads') {
             iconName = TAB_ICONS.downloads;
-          }
-          // else if (route.name === 'Profile') {
+          } // else if (route.name === 'Profile') {
           //   iconName = TAB_ICONS.profile;
           // }
           return <Icon size={25} color={color} name={iconName} />;
@@ -46,6 +48,13 @@ const TabsNavigation = () => {
         component={DrawerNavigation}
         options={{
           tabBarColor: TAB_COLOR.home,
+        }}
+      />
+      <Tab.Screen
+        name="Top Rated"
+        component={TopRated}
+        options={{
+          tabBarColor: TAB_COLOR.topRated,
         }}
       />
       <Tab.Screen

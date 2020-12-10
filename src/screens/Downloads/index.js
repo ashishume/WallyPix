@@ -1,6 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View, Dimensions, Linking} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Linking,
+  FlatList,
+} from 'react-native';
 import ImageList from '../../components/ImageList';
 import ImageModal from '../../components/ImageModal';
 import {FONT_FAMILY} from '../../../enviroment';
@@ -11,7 +17,9 @@ const Dashboard = (props) => {
   const [visible, setIsVisible] = useState(false);
   const [imageUri, setImageUri] = useState('');
   const [imageId, setImageId] = useState('');
+  const [isLoaded, setLoader] = useState(false);
 
+  const [isFetching, setIsFetching] = useState(false);
   const [downloaded, setDownloaded] = useState([]);
 
   useEffect(() => {
@@ -49,6 +57,14 @@ const Dashboard = (props) => {
     await setIsVisible(true);
   };
 
+  const onRefresh = async () => {
+    await setIsFetching(true);
+    const data = await getData('downloaded_image');
+    if (data !== null) await setDownloaded(data.reverse());
+    // await setLoader(true);
+    await setIsFetching(false);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Downloads</Text>
@@ -62,6 +78,8 @@ const Dashboard = (props) => {
       ) : null}
       {downloaded.length !== 0 ? (
         <FlatList
+          onRefresh={() => onRefresh()}
+          refreshing={isFetching}
           columnWrapperStyle={{justifyContent: 'space-between'}}
           data={downloaded}
           numColumns={2}
