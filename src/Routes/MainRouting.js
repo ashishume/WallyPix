@@ -9,6 +9,7 @@ import TabsNavigation from './TabsNavigation';
 import CategoryImageList from '../screens/CategoryImageList';
 import SplashScreen from '../screens/SplashScreen';
 import {FONT_FAMILY, TAB_COLOR} from '../../enviroment';
+import SearchScreen from '../screens/SearchScreen';
 const Stack = createStackNavigator();
 const config = {
   animation: 'spring',
@@ -36,6 +37,13 @@ const MainRouting = () => {
         <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="SearchScreen"
+          component={SearchScreen}
           options={{
             headerShown: false,
           }}

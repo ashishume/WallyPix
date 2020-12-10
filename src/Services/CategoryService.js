@@ -1,7 +1,6 @@
 import {
   CATEGORY_BASE_URL,
   DOWNLOAD_BASE_URL,
-  HOME_PAGE_BASE_URL,
   RESOLUTION_PIXELS,
 } from '../../enviroment';
 import cheerio from 'react-native-cheerio';

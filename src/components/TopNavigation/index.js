@@ -15,6 +15,9 @@ const TopNavigation = (props) => {
       ToastAndroid.show('Something went wrong', ToastAndroid.SHORT);
     }
   };
+  const onSearchHandler=()=>{
+    props.navigation.navigate('SearchScreen');
+  }
 
   return (
     <Fragment>
@@ -45,6 +48,16 @@ const TopNavigation = (props) => {
               flexGrow: 1,
             }}>
             {props.name}
+          </Text>
+          <Text
+            style={{
+              ...FONT_FAMILY,
+              fontSize: 40,
+              paddingRight: 10,
+            }}>
+            <TouchableOpacity onPress={() => onSearchHandler()}>
+              <Icon name="search" size={40} />
+            </TouchableOpacity>
           </Text>
           <Text
             style={{

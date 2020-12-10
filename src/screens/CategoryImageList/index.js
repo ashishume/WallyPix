@@ -4,11 +4,9 @@ import {
   View,
   Dimensions,
   ActivityIndicator,
-  BackHandler,
-  Text,
-  FlatList
+  FlatList,
 } from 'react-native';
-import {ADS_ID, COLOR_SCHEME, FONT_FAMILY} from '../../../enviroment';
+import {ADS_ID, COLOR_SCHEME} from '../../../enviroment';
 import ImageList from '../../components/ImageList';
 import ImageModal from '../../components/ImageModal';
 import {CategoryService} from '../../Services/CategoryService';
@@ -16,7 +14,6 @@ import {
   BannerAd,
   BannerAdSize,
   InterstitialAd,
-  AdEventType,
 } from '@react-native-firebase/admob';
 
 const {width, height} = Dimensions.get('window');
