@@ -13,12 +13,12 @@ import {CategoryService} from '../../Services/CategoryService';
 import {
   BannerAd,
   BannerAdSize,
-  InterstitialAd,
+  // InterstitialAd,
 } from '@react-native-firebase/admob';
 
 const {width, height} = Dimensions.get('window');
 
-const interstitial = InterstitialAd.createForAdRequest(ADS_ID.InterstitialId);
+// const interstitial = InterstitialAd.createForAdRequest(ADS_ID.InterstitialId);
 
 const CategoryImageList = (props) => {
   const [uri, setUri] = useState([]);
@@ -35,12 +35,12 @@ const CategoryImageList = (props) => {
       const data = await CategoryService(props.route.params.name.title);
       await setUri(data);
       await setLoader(true);
-      setTimeout(() => {
-        interstitial.show();
-      }, 3000);
+      // setTimeout(() => {
+      //   interstitial.show();
+      // }, 3000);
     };
     fetchAllImages();
-    interstitial.load();
+    // interstitial.load();
   }, []);
 
   const renderListItem = (data) => (

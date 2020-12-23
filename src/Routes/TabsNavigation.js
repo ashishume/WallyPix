@@ -1,13 +1,13 @@
 import React from 'react';
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DrawerNavigation from './DrawerNavigation';
 import Category from '../screens/Category';
 import Downloads from '../screens/Downloads';
-// import Profile from '../screens/Profile';
+import PixabayPictures from '../screens/PixabayPictures';
 import TopRated from '../screens/TopRated';
 import {COLOR_SCHEME, TAB_COLOR, TAB_ICONS} from '../../enviroment';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {Text} from 'react-native';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -24,11 +24,11 @@ const TabsNavigation = () => {
             iconName = TAB_ICONS.topRated;
           } else if (route.name === 'Category') {
             iconName = TAB_ICONS.category;
+          } else if (route.name === 'Random') {
+            iconName = TAB_ICONS.random;
           } else if (route.name === 'Downloads') {
             iconName = TAB_ICONS.downloads;
-          } // else if (route.name === 'Profile') {
-          //   iconName = TAB_ICONS.profile;
-          // }
+          }
           return <Icon size={25} color={color} name={iconName} />;
         },
       })}
@@ -42,7 +42,8 @@ const TabsNavigation = () => {
       inactiveColor="#fff"
       barStyle={{backgroundColor: '#694fad'}}
       backBehavior="none"
-      shifting={true}>
+      shifting={true}
+      >
       <Tab.Screen
         name="Home"
         component={DrawerNavigation}
@@ -55,12 +56,28 @@ const TabsNavigation = () => {
         component={TopRated}
         options={{
           tabBarColor: TAB_COLOR.topRated,
+          tabBarLabel: (
+            <Text style={{color: TAB_COLOR.tabFontColor}}>Top Rated</Text>
+          ),
         }}
+      />
+      <Tab.Screen
+        name="Random"
+        options={{
+          tabBarColor: TAB_COLOR.random,
+          tabBarLabel: (
+            <Text style={{color: TAB_COLOR.tabFontColor}}>Random</Text>
+          ),
+        }}
+        component={PixabayPictures}
       />
       <Tab.Screen
         name="Category"
         options={{
           tabBarColor: TAB_COLOR.category,
+          tabBarLabel: (
+            <Text style={{color: TAB_COLOR.tabFontColor}}>Category</Text>
+          ),
         }}
         component={Category}
       />
@@ -68,10 +85,12 @@ const TabsNavigation = () => {
         name="Downloads"
         options={{
           tabBarColor: TAB_COLOR.download,
+          tabBarLabel: (
+            <Text style={{color: TAB_COLOR.tabFontColor}}>Downloads</Text>
+          ),
         }}
         component={Downloads}
       />
-      {/* <Tab.Screen name="Profile" component={Profile} /> */}
     </Tab.Navigator>
   );
 };

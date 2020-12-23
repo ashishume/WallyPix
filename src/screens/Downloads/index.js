@@ -13,7 +13,7 @@ import {FONT_FAMILY} from '../../../enviroment';
 import {getData} from '../../Services/StorageService';
 import {Fragment} from 'react';
 const {width, height} = Dimensions.get('window');
-const Dashboard = (props) => {
+const Downloads = (props) => {
   const [visible, setIsVisible] = useState(false);
   const [imageUri, setImageUri] = useState('');
   const [imageId, setImageId] = useState('');
@@ -115,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Dashboard;
+export default Downloads;

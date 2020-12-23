@@ -1,16 +1,13 @@
-import React from 'react';
-import {View} from 'react-native';
-import Dashboard from '../Dashboard';
+import React, {Fragment} from 'react';
 import TopNavigation from '../../components/TopNavigation';
-import {BannerAd, BannerAdSize} from '@react-native-firebase/admob';
-import {ADS_ID, COLOR_SCHEME} from '../../../enviroment';
+import {HomePageService} from '../../Services/HomePageService';
+import ImageLoadingWrapper from '../../components/ImageLoadingComponent';
 const Home = (props) => {
   return (
-    <View style={{backgroundColor: COLOR_SCHEME.primaryBackgroundColor}}>
+    <Fragment>
       <TopNavigation {...props} name={'Latest'} />
-      <BannerAd unitId={ADS_ID.bannerId} size={BannerAdSize.FULL_BANNER} />
-      <Dashboard {...props} />
-    </View>
+      <ImageLoadingWrapper title="" loadPicturesHandler={HomePageService} />
+    </Fragment>
   );
 };
 

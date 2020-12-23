@@ -5,13 +5,15 @@ export const DOWNLOAD_BASE_URL = 'https://images.wallpaperscraft.com/';
 export const GOOGLE_DRIVE_LINK = 'https://lh3.googleusercontent.com/d/';
 
 //PEXELS ENV VARIABLES--------------------------------------
-
 export const AUTHORISATION =
   '563492ad6f91700001000001d6985e49e1424b35a096ff1d76d92ad6';
-
 export const PEXELS_PHOTO_BASE_URL = 'https://api.pexels.com/v1/';
-
 //PEXELS ENV VARIABLES--------------------------------------
+
+//PEXA BAY ENV VARIABLES--------------------------------------
+export const PIXA_BAY_AUTHORISATION_KEY = '19633269-4be018249ac926ca3741ea10c';
+export const PIXA_BAY_PHOTO_BASE_URL = 'https://pixabay.com/api/';
+//PEXA BAY ENV VARIABLES--------------------------------------
 
 export const RESOLUTION_PIXELS = {
   1440: '1440x2560',
@@ -35,16 +37,19 @@ export const TAB_ICONS = {
   home: 'wallpaper',
   topRated: 'monitor-star',
   category: 'compass',
+  random: 'arrow-all',
   downloads: 'download-circle',
   profile: 'face-profile',
 };
 
-// #c97a3e
 export const TAB_COLOR = {
   home: '#f4511e',
   category: '#2c9913',
   download: '#3568ba',
+  random: '#db3b9d',
   topRated: '#7847b7',
+  //tab font color
+  tabFontColor: '#fff',
 };
 
 export const FONT_FAMILY = {

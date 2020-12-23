@@ -10,6 +10,7 @@ import CategoryImageList from '../screens/CategoryImageList';
 import SplashScreen from '../screens/SplashScreen';
 import {FONT_FAMILY, TAB_COLOR} from '../../enviroment';
 import SearchScreen from '../screens/SearchScreen';
+import PixabayPictures from '../screens/PixabayPictures';
 const Stack = createStackNavigator();
 const config = {
   animation: 'spring',
@@ -37,6 +38,13 @@ const MainRouting = () => {
         <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="PixabayPictures"
+          component={PixabayPictures}
           options={{
             headerShown: false,
           }}

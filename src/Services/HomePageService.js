@@ -65,7 +65,7 @@ export const HomePageService = async (page = 1) => {
 
       temp.push({
         id: tempHref[2],
-        imageUri: createUrl,
+        photoUrl: createUrl,
       });
     }
     return temp;
