@@ -44,7 +44,7 @@ const DrawerContent = (props) => {
         <TouchableOpacity onPress={() => pressHandler('report-bug')}>
           <Text style={styles.bug}>Report a bug</Text>
         </TouchableOpacity>
-        <Text style={styles.developerText}>Version 1.0</Text>
+        <Text style={styles.developerText}>Version 1.2</Text>
       </View>
     </View>
   );
