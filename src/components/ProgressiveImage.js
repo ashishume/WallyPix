@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: '#fff',
-    borderRadius: 20,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: 'lightgray',
   },

@@ -62,7 +62,7 @@ const Category = (props) => {
       <FlatList
         data={CATEGORY_LIST}
         renderItem={renderCategoryListItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
       />
     </Fragment>
   );

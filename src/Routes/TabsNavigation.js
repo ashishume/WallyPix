@@ -18,6 +18,7 @@ const TabsNavigation = () => {
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
+          let focusColor;
           if (route.name === 'Home') {
             iconName = TAB_ICONS.home;
           } else if (route.name === 'Top Rated') {
@@ -29,7 +30,10 @@ const TabsNavigation = () => {
           } else if (route.name === 'Downloads') {
             iconName = TAB_ICONS.downloads;
           }
-          return <Icon size={25} color={color} name={iconName} />;
+          {
+            focusColor = focused == true ? '#000' : '#707070';
+          }
+          return <Icon size={25} color={focusColor} name={iconName} />;
         },
       })}
       // tabBarOptions={{
@@ -38,33 +42,35 @@ const TabsNavigation = () => {
       // }}
 
       initialRouteName="Home"
-      activeColor="#fff"
-      inactiveColor="#fff"
-      barStyle={{backgroundColor: '#694fad'}}
+      activeColor="#000"
+      inactiveColor="#000"
+      barStyle={{
+        backgroundColor: '#fff',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 7,
+        },
+        shadowOpacity: 0.43,
+        shadowRadius: 9.51,
+        elevation: 15,
+      }}
       backBehavior="none"
-      shifting={true}
-      >
+      shifting={true}>
       <Tab.Screen
         name="Home"
         component={DrawerNavigation}
         options={{
-          tabBarColor: TAB_COLOR.home,
-        }}
-      />
-      <Tab.Screen
-        name="Top Rated"
-        component={TopRated}
-        options={{
-          tabBarColor: TAB_COLOR.topRated,
+          // tabBarColor: TAB_COLOR.home,
           tabBarLabel: (
-            <Text style={{color: TAB_COLOR.tabFontColor}}>Top Rated</Text>
+            <Text style={{color: TAB_COLOR.tabFontColor}}>Home</Text>
           ),
         }}
       />
       <Tab.Screen
         name="Random"
         options={{
-          tabBarColor: TAB_COLOR.random,
+          // tabBarColor: TAB_COLOR.random,
           tabBarLabel: (
             <Text style={{color: TAB_COLOR.tabFontColor}}>Random</Text>
           ),
@@ -72,9 +78,20 @@ const TabsNavigation = () => {
         component={PixabayPictures}
       />
       <Tab.Screen
+        name="Top Rated"
+        component={TopRated}
+        options={{
+          // tabBarColor: TAB_COLOR.topRated,
+          tabBarLabel: (
+            <Text style={{color: TAB_COLOR.tabFontColor}}>Top Rated</Text>
+          ),
+        }}
+      />
+
+      <Tab.Screen
         name="Category"
         options={{
-          tabBarColor: TAB_COLOR.category,
+          // tabBarColor: TAB_COLOR.category,
           tabBarLabel: (
             <Text style={{color: TAB_COLOR.tabFontColor}}>Category</Text>
           ),
@@ -84,7 +101,7 @@ const TabsNavigation = () => {
       <Tab.Screen
         name="Downloads"
         options={{
-          tabBarColor: TAB_COLOR.download,
+          // tabBarColor: TAB_COLOR.download,
           tabBarLabel: (
             <Text style={{color: TAB_COLOR.tabFontColor}}>Downloads</Text>
           ),

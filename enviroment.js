@@ -13,7 +13,32 @@ export const PEXELS_PHOTO_BASE_URL = 'https://api.pexels.com/v1/';
 //PEXA BAY ENV VARIABLES--------------------------------------
 export const PIXA_BAY_AUTHORISATION_KEY = '19633269-4be018249ac926ca3741ea10c';
 export const PIXA_BAY_PHOTO_BASE_URL = 'https://pixabay.com/api/';
+
+export const PIXA_BAY_CATEGORIES = [
+  {id: 1, name: 'backgrounds'},
+  {id: 2, name: 'fashion'},
+  {id: 3, name: 'nature'},
+  {id: 4, name: 'science'},
+  {id: 5, name: 'education'},
+  {id: 6, name: 'feelings'},
+  {id: 7, name: 'health'},
+  {id: 8, name: 'people'},
+  {id: 9, name: 'religion'},
+  {id: 10, name: 'places'},
+  {id: 11, name: 'animals'},
+  {id: 12, name: 'industry'},
+  {id: 13, name: 'computer'},
+  {id: 14, name: 'food'},
+  {id: 15, name: 'sports'},
+  {id: 16, name: 'transportation'},
+  {id: 17, name: 'travel'},
+  {id: 18, name: 'buildings'},
+  {id: 19, name: 'business'},
+  {id: 20, name: 'music'},
+];
+
 //PEXA BAY ENV VARIABLES--------------------------------------
+
 
 export const RESOLUTION_PIXELS = {
   1440: '1440x2560',
@@ -49,7 +74,7 @@ export const TAB_COLOR = {
   random: '#db3b9d',
   topRated: '#7847b7',
   //tab font color
-  tabFontColor: '#fff',
+  tabFontColor: '#000',
 };
 
 export const FONT_FAMILY = {

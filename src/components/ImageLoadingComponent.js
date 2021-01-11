@@ -90,7 +90,7 @@ const ImageLoadingWrapper = (props) => {
         numColumns={2}
         renderItem={renderListItem}
         onEndReachedThreshold={0.5}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         onEndReached={() => endScrolling()}
       />
     </View>
@@ -100,7 +100,7 @@ const ImageLoadingWrapper = (props) => {
 const styles = StyleSheet.create({
   container: {
     height: height,
-    paddingBottom: 80,
+    // paddingBottom: 0,
     backgroundColor: '#fff',
   },
   headerText: {

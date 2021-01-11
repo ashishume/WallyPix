@@ -80,7 +80,7 @@ const Search = (props) => {
         numColumns={2}
         renderItem={renderListItem}
         onEndReachedThreshold={0.5}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         onEndReached={() => endScrolling()}
       />
 

@@ -49,6 +49,7 @@ const MainRouting = () => {
             headerShown: false,
           }}
         />
+       
         <Stack.Screen
           name="SearchScreen"
           component={SearchScreen}
@@ -69,12 +70,13 @@ const MainRouting = () => {
           options={(props) => ({
             title: props.route.params.name.title.toUpperCase(),
             headerStyle: {
-              backgroundColor: TAB_COLOR.category,
+              // backgroundColor: TAB_COLOR.category,
+              backgroundColor: "#fff",
             },
             headerTitleStyle: {
               ...FONT_FAMILY,
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
           })}
         />
       </Stack.Navigator>

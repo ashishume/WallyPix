@@ -33,12 +33,13 @@ const ImageList = ({imageUri, imageClickHandler}) => {
 };
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
+    marginVertical: 7,
+    marginHorizontal: 7,
   },
   image: {
-    height: 300,
+    height: 270,
     width: width / 2 - 20,
-    borderRadius: 20,
+    borderRadius: 10,
     resizeMode: 'cover',
   },
 });

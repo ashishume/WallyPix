@@ -25,7 +25,7 @@ export const searchPexelsPictures = async (search, page = 1) => {
       PEXELS_PHOTO_BASE_URL +
       'search?query=' +
       search +
-      '&per_page=25&page=' +
+      '&per_page=30&page=' +
       page;
     const resp = await axios.get(reqUrl, {
       headers: {Authorization: AUTHORISATION},
